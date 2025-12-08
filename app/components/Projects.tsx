@@ -1,12 +1,18 @@
 import { DATA } from "../data";
 import { ArrowUpRight, Github, Link as LinkIcon } from "lucide-react";
-import Image from "next/image";
 
 export default function Projects() {
   return (
-    <section className="py-20">
+    <section
+      id="professional"
+      aria-labelledby="projects-title"
+      className="py-20"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-2xl font-bold tracking-wide text-center mb-16">
+        <h2
+          id="projects-title"
+          className="text-2xl font-bold tracking-wide text-center mb-16"
+        >
           A small selection of <span className="text-accent">recent projects</span>
         </h2>
 

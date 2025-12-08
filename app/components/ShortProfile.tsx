@@ -3,9 +3,16 @@ import { MessageCircle, ArrowUpRight } from "lucide-react";
 
 export default function ShortProfile() {
   return (
-    <section className="py-20 bg-black/20">
+    <section
+      id="personal"
+      aria-labelledby="short-profile-title"
+      className="py-20 bg-black/20"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-2xl font-bold tracking-wide text-center mb-12 font-mono">
+        <h2
+          id="short-profile-title"
+          className="text-2xl font-bold tracking-wide text-center mb-12 font-mono"
+        >
           Short Profile
         </h2>
 

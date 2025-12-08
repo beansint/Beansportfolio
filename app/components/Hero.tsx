@@ -1,17 +1,23 @@
-import Image from "next/image";
 import { DATA } from "../data";
 import { ArrowRight, Download } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
+    <section
+      id="home"
+      aria-labelledby="home-title"
+      className="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden"
+    >
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 space-y-6 text-center md:text-left">
             <h2 className="text-sm md:text-base font-mono text-accent tracking-wider uppercase">
               {DATA.profile.role}
             </h2>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+            <h1
+              id="home-title"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
+            >
               Hello I'm <br />
               <span className="text-accent">{DATA.profile.name.split(" ")[0]}</span>{" "}
               {DATA.profile.name.split(" ")[1]}

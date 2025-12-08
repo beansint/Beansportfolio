@@ -3,9 +3,16 @@ import { DATA } from "../data";
 
 export default function Education() {
   return (
-    <section className="py-20">
+    <section
+      id="education"
+      aria-labelledby="education-title"
+      className="py-20"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-center gap-2 mb-12">
+        <div
+          id="education-title"
+          className="flex items-center justify-center gap-2 mb-12"
+        >
           <GraduationCap className="text-accent w-6 h-6" />
           <h2 className="text-2xl font-bold tracking-wide">Education</h2>
         </div>

@@ -2,9 +2,16 @@ import { DATA } from "../data";
 
 export default function Timeline() {
   return (
-    <section className="py-20">
+    <section
+      id="timeline"
+      aria-labelledby="timeline-title"
+      className="py-20"
+    >
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-2xl font-bold tracking-wide text-left mb-12 max-w-5xl mx-auto">
+        <h2
+          id="timeline-title"
+          className="text-2xl font-bold tracking-wide text-left mb-12 max-w-5xl mx-auto"
+        >
           My journey report
         </h2>
         
