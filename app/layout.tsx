@@ -12,17 +12,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const NAME = "[YOUR_NAME]";
-const ROLE = "[YOUR_ROLE]";
-const LOCATION = "[YOUR_LOCATION]";
-const DOMAIN = "https://[YOUR_DOMAIN].com";
+const NAME = "Vincent B. Pacaña";
+const ROLE = "Full Stack Developer";
+const LOCATION = "Cebu City, Philippines";
+// Use a valid default to avoid runtime URL errors; replace with your real domain.
+const DOMAIN = "https://example.com";
 const PROFILE_IMAGE = "[YOUR_PROFILE_IMAGE]";
 const SHORT_BIO = "[SHORT_BIO]";
 const TECH_1 = "[KEY_TECH_1]";
 const TECH_2 = "[KEY_TECH_2]";
 const TECH_3 = "[KEY_TECH_3]";
-const GITHUB_URL = "https://github.com/[YOUR_USERNAME]";
-const LINKEDIN_URL = "https://linkedin.com/in/[YOUR_USERNAME]";
+const GITHUB_URL = "https://github.com/beansint";
+const LINKEDIN_URL = "https://linkedin.com/in/vincentpacanab";
 
 const structuredData = {
   "@context": "https://schema.org",

@@ -105,10 +105,14 @@ export const DATA = {
     },
   ],
   contact: {
-    email: "contact@example.com",
+    email: "vincentpacana0@gmail.com",
     socials: [
-      { name: "GitHub", icon: Github, link: "https://github.com" },
-      { name: "LinkedIn", icon: Linkedin, link: "https://linkedin.com" },
+      { name: "GitHub", icon: Github, link: "https://github.com/beansint" },
+      {
+        name: "LinkedIn",
+        icon: Linkedin,
+        link: "https://linkedin.com/in/vincentpacanab",
+      },
       { name: "Twitter", icon: Twitter, link: "https://twitter.com" },
     ],
   },
