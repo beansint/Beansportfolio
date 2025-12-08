@@ -8,6 +8,20 @@ export default function Footer() {
       aria-labelledby="contact-title"
       className="py-20 relative overflow-hidden"
     >
+      {/* subtle grid background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(ellipse at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
+        }}
+      />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <h2

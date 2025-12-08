@@ -16,6 +16,8 @@ Still replace the remaining placeholders below.
 - `app/layout.tsx` → replace domain (currently `https://example.com` as a safe default), profile image, bio, tech stack, and project placeholders in meta tags and JSON-LD.
 - `app/components/Navbar.tsx` → nav links target `#professional`, `#personal`, and `#contact`.
 - `app/components/*` → section `id`/`aria-labelledby` are set; ensure they still match your final content.
+- Fonts: Montserrat (headings) and Poppins (body) added via `next/font/google`; body/headings wired in `globals.css`.
+- Icons: Font Awesome used in `app/components/Education.tsx` via `react-icons`.
 
 ## Placeholder map
 - Domain & assets: Currently set to `https://example.com` (safe default for runtime). Replace with your actual domain. `[YOUR_PROFILE_IMAGE]` (path under `/public`).

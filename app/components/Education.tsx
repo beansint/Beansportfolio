@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import { FaGraduationCap } from "react-icons/fa";
 import { DATA } from "../data";
 
 export default function Education() {
@@ -13,7 +13,7 @@ export default function Education() {
           id="education-title"
           className="flex items-center justify-center gap-2 mb-12"
         >
-          <GraduationCap className="text-accent w-6 h-6" />
+          <FaGraduationCap className="text-accent w-6 h-6" />
           <h2 className="text-2xl font-bold tracking-wide">Education</h2>
         </div>
 
@@ -21,9 +21,9 @@ export default function Education() {
           {DATA.education.map((edu, index) => (
             <div
               key={index}
-              className="bg-card-bg border border-card-border p-6 rounded-2xl hover:border-accent/50 transition-colors group"
+              className="bg-card-bg border border-card-border p-6 rounded-2xl hover:border-accent/50 transition-colors group h-[230px] md:h-[250px] flex flex-col justify-between"
             >
-              <h3 className="text-xl font-bold text-white mb-1 group-hover:text-accent transition-colors">
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors break-words leading-tight">
                 {edu.school}
               </h3>
               <p className="text-gray-400 text-sm mb-4">{edu.degree}</p>

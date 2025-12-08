@@ -8,7 +8,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div className="font-bold text-xl tracking-tight">
-          Radnaabazar <span className="text-accent">.</span>
+          Vincent Pacaña<span className="text-accent">.</span>
         </div>
 
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">

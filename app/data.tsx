@@ -2,33 +2,46 @@ import { Github, Linkedin, Mail, Twitter, User, Code, Terminal, Cpu, Globe } fro
 
 export const DATA = {
   profile: {
-    name: "Radnaabazar Bulgan",
-    role: "Software Engineer",
-    bio: "Developer who has built clean, reliable systems for e-commerce, real-time auctions, and stock exchanges.",
-    location: "Ulaanbaatar, Mongolia", // Inferred from image
+    name: "Vincent B. Pacaña",
+    role: "Full Stack Developer",
+    bio: "Full-stack developer in Cebu City building e-commerce platforms, Stripe payments, and cloud-hosted apps end to end.",
+    location: "Cebu City, Philippines",
     stats: [
-      { label: "Age", value: "21" },
+      { label: "Age", value: "23" },
       { label: "Years of experience", value: "2" },
-      { label: "Projects Handled", value: "20" },
-      { label: "Clients", value: "8" },
+      { label: "Projects worked on", value: "6" },
+      { label: "Certifications", value: "6" },
     ],
   },
   education: [
     {
-      school: "High School Certificate",
-      degree: "High School",
-      year: "2018 - 2021",
+      school: "Cebu Institute of Technology - University",
+      degree: "Bachelor of Science in Information Technology",
+      year: "2022 - Present",
     },
     {
-      school: "Bachelor in Software Engineering",
-      degree: "University",
-      year: "2021 - Present",
+      school: "Cebu Doctors University",
+      degree: "Senior High School",
+      year: "2019 - 2021",
+    },
+    {
+      school: "Cebu Normal University",
+      degree: "Junior High School",
+      year: "2015 - 2019",
     },
   ],
   skills: {
-    languages: "Fluent in Japanese, English, and Mongolian",
-    techStack: ["NEXT.JS", "React", "TypeScript", "Node.js", "Python", "Go"],
-    learning: "Currently learning at university while working",
+    languages: "English and Filipino; comfortable collaborating with distributed teams",
+    techStack: [
+      "NEXT.Js",
+      "Node.js",
+      "React",
+      "Spring Boot",
+      "Python (FastAPI, Django, Flask)",
+      "PostgreSQL",
+      "Stripe",
+    ],
+    learning: "Currently learning at CIT-U and working on projects",
   },
   projects: [
     {
@@ -85,7 +98,7 @@ export const DATA = {
   timeline: [
     {
       year: "2025",
-      title: "Future Goals",
+      title: "Completed AWS Academy Cloud Foundations and Cloud Architecting",
       description: "Aiming to become a Full Stack Architect and contribute to open source.",
     },
     {

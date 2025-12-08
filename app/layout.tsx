@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,12 +12,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 const NAME = "Vincent B. Pacaña";
 const ROLE = "Full Stack Developer";
 const LOCATION = "Cebu City, Philippines";
 // Use a valid default to avoid runtime URL errors; replace with your real domain.
 const DOMAIN = "https://example.com";
-const PROFILE_IMAGE = "[YOUR_PROFILE_IMAGE]";
+const PROFILE_IMAGE = "2x2.jpg";
 const SHORT_BIO = "[SHORT_BIO]";
 const TECH_1 = "[KEY_TECH_1]";
 const TECH_2 = "[KEY_TECH_2]";
@@ -99,10 +111,6 @@ export const metadata: Metadata = {
     url: DOMAIN,
     title: `${NAME} - ${ROLE} | Portfolio`,
     description: SHORT_BIO,
-    profile: {
-      firstName: NAME.split(" ")[0] ?? NAME,
-      lastName: NAME.split(" ").slice(1).join(" ") || NAME,
-    },
     images: [
       {
         url: `${DOMAIN}/${PROFILE_IMAGE}`,
@@ -167,7 +175,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} antialiased`}
       >
         {children}
       </body>

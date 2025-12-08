@@ -1,5 +1,6 @@
 import { DATA } from "../data";
 import { ArrowRight, Download } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -8,6 +9,20 @@ export default function Hero() {
       aria-labelledby="home-title"
       className="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden"
     >
+      {/* subtle grid background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage:
+            "radial-gradient(ellipse at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%)",
+        }}
+      />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 space-y-6 text-center md:text-left">
@@ -19,8 +34,7 @@ export default function Hero() {
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             >
               Hello I'm <br />
-              <span className="text-accent">{DATA.profile.name.split(" ")[0]}</span>{" "}
-              {DATA.profile.name.split(" ")[1]}
+              <span className="text-accent">{DATA.profile.name}</span>
             </h1>
             <p className="text-gray-400 max-w-lg mx-auto md:mx-0 text-lg">
               {DATA.profile.bio}
@@ -37,18 +51,22 @@ export default function Hero() {
           </div>
           
           <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 relative rounded-full border-2 border-accent/30 p-2">
-               <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_10s_linear_infinite]" />
-               <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800">
-                 {/* Placeholder for profile image */}
-                 <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                    Profile Image
-                 </div>
+            <div className="w-100 h-100 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
+               <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
+               <div className="absolute inset-3 rounded-full border border-accent/25 animate-[spin_26s_linear_infinite]" />
+               <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
+                 <Image
+                   src="/2x2.jpg"
+                   alt={`${DATA.profile.name} profile picture`}
+                   fill
+                   className="object-cover"
+                   priority
+                 />
                </div>
             </div>
             
             {/* Decorative background elements */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]" />
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-accent/6 rounded-full blur-[140px]" />
           </div>
         </div>
         
