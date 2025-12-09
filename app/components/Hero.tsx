@@ -1,5 +1,5 @@
 import { DATA } from "../data";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
@@ -81,6 +81,28 @@ export default function Hero() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Social Links */}
+        <div className="flex items-center justify-center gap-4 mt-12">
+          {DATA.contact.socials
+            .filter((social) => social.name === "GitHub" || social.name === "LinkedIn")
+            .map((social) => (
+              <a
+                key={social.name}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-gray-700 hover:border-accent bg-white/5 hover:bg-white/10 transition-all group"
+                aria-label={`Visit ${social.name} profile`}
+              >
+                {social.name === "GitHub" ? (
+                  <Github className="w-5 h-5 text-gray-300 group-hover:text-accent transition-colors" />
+                ) : (
+                  <Linkedin className="w-5 h-5 text-gray-300 group-hover:text-accent transition-colors" />
+                )}
+              </a>
+            ))}
         </div>
       </div>
     </section>

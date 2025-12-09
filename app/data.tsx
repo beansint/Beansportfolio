@@ -49,16 +49,16 @@ export const DATA = {
       description:
         "Web-based radio broadcasting for CIT-U Wildcat Radio; co-led architecture, cloud VMs, and main broadcasting features.",
       tech: ["Spring Boot", "Flask", "Icecast", "React", "PostgreSQL"],
-      link: "#",
-      image: "",
+      link: "https://wildcat-radio.live/",
+      image: "/images/projects/wildcatradio.png",
     },
     {
       title: "Studyboost.com",
       description:
         "Full-stack e-commerce for a client; payment processing (Stripe), affiliates, tech plans, cloud storage, and bulk data import.",
       tech: ["Spring Boot", "React", "PostgreSQL", "Stripe"],
-      link: "#",
-      image: "",
+      link: "https://studyboost.com/",
+      image: "/images/projects/studyboost.png",
     },
     {
       title: "Project Chimera (Web Game)",
@@ -69,12 +69,12 @@ export const DATA = {
       image: "",
     },
     {
-      title: "Qualitidex (AI QA System)",
+      title: "BlockNotes",
       description:
-        "AI-powered QA for BPOs: ingests call recordings, transcribes (Deepgram), LLM evaluation (Gemini/Claude), and scoring.",
-      tech: ["FastAPI", "React.js", "PostgreSQL", "Deepgram", "Gemini"],
-      link: "#",
-      image: "",
+        "Blockchain Django web app on Cardano: immutable payment-linked notes, CIP-30 wallet (Lace/Eternl) via Blaze SDK, client-side signing, REST APIs for async transaction logging with Blockfrost, refactored to move tx logic to frontend for lower server load and better security.",
+      tech: ["Django", "Cardano", "CIP-30", "Blaze SDK", "Vite", "Python", "Blockfrost"],
+      link: "",
+      image: "/images/projects/blocknotes-blockchain-notepad.png",
     },
   ],
   experience: [

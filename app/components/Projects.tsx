@@ -60,8 +60,13 @@ export default function Projects() {
                    </div>
                 </div>
                 
-                <a href={project.link} className="flex items-center gap-2 text-accent text-sm font-bold uppercase tracking-wider hover:underline">
-                    Check Live Site <ArrowUpRight className="w-4 h-4" />
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-accent text-sm font-bold uppercase tracking-wider hover:underline"
+                >
+                  Check Live Site <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
