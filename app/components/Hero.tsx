@@ -55,8 +55,8 @@ export default function Hero() {
                <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
                <div className="absolute inset-3 rounded-full border border-accent/25 animate-[spin_26s_linear_infinite]" />
                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
-                 <Image
-                   src="/2x2.jpg"
+                <Image
+                   src="/images/personal/2x2.jpg"
                    alt={`${DATA.profile.name} profile picture`}
                    fill
                    className="object-cover"

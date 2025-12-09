@@ -29,7 +29,7 @@ const ROLE = "Full Stack Developer";
 const LOCATION = "Cebu City, Philippines";
 // Use a valid default to avoid runtime URL errors; replace with your real domain.
 const DOMAIN = "https://example.com";
-const PROFILE_IMAGE = "2x2.jpg";
+const PROFILE_IMAGE = "images/personal/2x2.jpg";
 const SHORT_BIO = "[SHORT_BIO]";
 const TECH_1 = "[KEY_TECH_1]";
 const TECH_2 = "[KEY_TECH_2]";
