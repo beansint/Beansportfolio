@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-12 text-sm text-gray-500">
-          <p>© 2024 Radnaabazar Bulgan. All rights reserved.</p>
+          <p>© 2025 Vincent Pacaña. All rights reserved.</p>
           
           <div className="flex gap-6 mt-4 md:mt-0">
              {DATA.contact.socials.map((social, index) => (
