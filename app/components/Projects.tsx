@@ -1,5 +1,6 @@
 import { DATA } from "../data";
 import { ArrowUpRight, Github, Link as LinkIcon } from "lucide-react";
+import Image from "next/image";
 
 export default function Projects() {
   return (
@@ -23,17 +24,20 @@ export default function Projects() {
               className="bg-card-bg border border-card-border rounded-3xl p-6 hover:border-accent/30 transition-all group"
             >
               <div className="relative w-full h-48 mb-6 rounded-2xl overflow-hidden bg-gray-800">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-600">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 540px, 100vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    priority={index < 2}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-600">
                     Project Preview
-                </div>
-                 {/* 
-                 <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                /> 
-                */}
+                  </div>
+                )}
               </div>
               
               <div className="flex justify-between items-start mb-4">

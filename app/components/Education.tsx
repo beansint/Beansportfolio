@@ -17,11 +17,11 @@ export default function Education() {
           <h2 className="text-2xl font-bold tracking-wide">Education</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="flex flex-row gap-6 max-w-6xl mx-auto overflow-x-auto pb-4">
           {DATA.education.map((edu, index) => (
             <div
               key={index}
-              className="bg-card-bg border border-card-border p-6 rounded-2xl hover:border-accent/50 transition-colors group h-[230px] md:h-[250px] flex flex-col justify-between"
+              className="bg-card-bg border border-card-border p-6 rounded-2xl hover:border-accent/50 transition-colors group flex-shrink-0 w-[280px] md:w-[300px] h-[160px] md:h-[180px] flex flex-col justify-between"
             >
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors break-words leading-tight">
                 {edu.school}

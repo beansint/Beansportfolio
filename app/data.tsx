@@ -21,12 +21,12 @@ export const DATA = {
     },
     {
       school: "Cebu Doctors University",
-      degree: "Senior High School",
+      degree: "Senior High School - With Honors",
       year: "2019 - 2021",
     },
     {
       school: "Cebu Normal University",
-      degree: "Junior High School",
+      degree: "Junior High School - With Honors",
       year: "2015 - 2019",
     },
   ],
@@ -45,32 +45,36 @@ export const DATA = {
   },
   projects: [
     {
-      title: "Mongolian Bond Market",
-      description: "A real-time platform for bond trading and analysis.",
-      tech: ["Next.js", "TypeScript", "Tailwind"],
+      title: "Wildcat Radio",
+      description:
+        "Web-based radio broadcasting for CIT-U Wildcat Radio; co-led architecture, cloud VMs, and main broadcasting features.",
+      tech: ["Spring Boot", "Flask", "Icecast", "React", "PostgreSQL"],
       link: "#",
-      image: "/placeholder-project-1.jpg",
+      image: "",
     },
     {
-      title: "Mining Auction System",
-      description: "A real-time auction of products such as coal, iron, and gold.",
-      tech: ["React", "Node.js", "Socket.io"],
+      title: "Studyboost.com",
+      description:
+        "Full-stack e-commerce for a client; payment processing (Stripe), affiliates, tech plans, cloud storage, and bulk data import.",
+      tech: ["Spring Boot", "React", "PostgreSQL", "Stripe"],
       link: "#",
-      image: "/placeholder-project-2.jpg",
+      image: "",
     },
     {
-      title: "Gobi Deluxe Hotel & Resort",
-      description: "A SaaS platform for room management, booking, and services.",
-      tech: ["Next.js", "Prisma", "PostgreSQL"],
+      title: "Project Chimera (Web Game)",
+      description:
+        "4-hour hackathon-winning web game; co-built mechanics, logic design, and technical foundation.",
+      tech: ["HTML", "JavaScript", "CSS"],
       link: "#",
-      image: "/placeholder-project-3.jpg",
+      image: "",
     },
     {
-      title: "Stock Companion",
-      description: "Official Mongolian Stock Exchange analytics dashboard.",
-      tech: ["Next.js", "Recharts", "Python"],
+      title: "Qualitidex (AI QA System)",
+      description:
+        "AI-powered QA for BPOs: ingests call recordings, transcribes (Deepgram), LLM evaluation (Gemini/Claude), and scoring.",
+      tech: ["FastAPI", "React.js", "PostgreSQL", "Deepgram", "Gemini"],
       link: "#",
-      image: "/placeholder-project-4.jpg",
+      image: "",
     },
   ],
   experience: [

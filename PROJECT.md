@@ -18,6 +18,7 @@ Still replace the remaining placeholders below.
 - `app/components/*` → section `id`/`aria-labelledby` are set; ensure they still match your final content.
 - Fonts: Montserrat (headings) and Poppins (body) added via `next/font/google`; body/headings wired in `globals.css`.
 - Icons: Font Awesome used in `app/components/Education.tsx` via `react-icons`.
+- Projects data updated to resume items; project images are rendered when `project.image` is provided in `DATA.projects` (fallback preview otherwise).
 
 ## Placeholder map
 - Domain & assets: Currently set to `https://example.com` (safe default for runtime). Replace with your actual domain. `[YOUR_PROFILE_IMAGE]` (path under `/public`).
