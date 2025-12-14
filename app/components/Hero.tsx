@@ -44,9 +44,15 @@ export default function Hero() {
               <button className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors">
                 Contact Me <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group">
-                Download CV <Download className="w-4 h-4 group-hover:text-accent transition-colors" />
-              </button>
+              <a
+                href={DATA.profile.resumeUrl}
+                download
+                className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group"
+                aria-label="Download Vincent Pacaña resume"
+              >
+                Download CV{" "}
+                <Download className="w-4 h-4 group-hover:text-accent transition-colors" />
+              </a>
             </div>
           </div>
           

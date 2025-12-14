@@ -6,6 +6,7 @@ export const DATA = {
     role: "Full Stack Developer",
     bio: "Full-stack developer in Cebu City building e-commerce platforms, Stripe payments, and cloud-hosted apps end to end.",
     location: "Cebu City, Philippines",
+    resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
     stats: [
       { label: "Age", value: "23" },
       { label: "Years of experience", value: "2" },
