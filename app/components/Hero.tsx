@@ -1,8 +1,43 @@
+"use client";
+
 import { DATA } from "../data";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
+  const handleContactScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    if (!href) return;
+    
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    
+          if (elem) {
+            const targetPosition = elem.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 200;
+            let start: number | null = null;
+      const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      };
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <section
       id="home"
@@ -41,9 +76,13 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-              <button className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors">
+              <a
+                href="#contact"
+                onClick={handleContactScroll}
+                className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors cursor-pointer"
+              >
                 Contact Me <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
               <a
                 href={DATA.profile.resumeUrl}
                 download
@@ -114,4 +153,3 @@ export default function Hero() {
     </section>
   );
 }
-
