@@ -4,7 +4,7 @@ export const DATA = {
   profile: {
     name: "Vincent B. Pacaña",
     role: "Full Stack Developer",
-    bio: "Full-stack developer in Cebu City building e-commerce platforms, Stripe payments, and cloud-hosted apps end to end.",
+    bio: "Full-stack developer based in Cebu City focused on building real systems that solve real business problems, from user-facing applications to backend and cloud infrastructure.",
     location: "Cebu City, Philippines",
     resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
     stats: [
@@ -67,7 +67,7 @@ export const DATA = {
         "4-hour hackathon-winning web game; co-built mechanics, logic design, and technical foundation.",
       tech: ["HTML", "JavaScript", "CSS"],
       link: "#",
-      image: "",
+      image: "/images/projects/hackathon.png",
     },
     {
       title: "BlockNotes",
