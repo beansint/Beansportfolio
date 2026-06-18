@@ -11,9 +11,9 @@ Current identity filled in:
 Still replace the remaining placeholders below.
 
 ## Files to update
-- `public/robots.txt` → replace `https://example.com` with your actual domain.
-- `public/sitemap.xml` → replace `https://example.com` with your actual domain and update `lastmod` date.
-- `app/layout.tsx` → replace domain (currently `https://example.com` as a safe default), profile image, bio, tech stack, and project placeholders in meta tags and JSON-LD.
+- `public/robots.txt` → set to `https://www.vincentpacana.com/sitemap.xml` (done).
+- `public/sitemap.xml` → set domain to `https://www.vincentpacana.com/` and lastmod to `2025-12-09` (update on next release as needed).
+- `app/layout.tsx` → domain set to `https://www.vincentpacana.com`; still replace bio/tech/project placeholders in JSON-LD when ready.
 - `app/components/Navbar.tsx` → nav links target `#professional`, `#personal`, and `#contact`.
 - `app/components/*` → section `id`/`aria-labelledby` are set; ensure they still match your final content.
 - Fonts: Montserrat (headings) and Poppins (body) added via `next/font/google`; body/headings wired in `globals.css`.
@@ -21,7 +21,7 @@ Still replace the remaining placeholders below.
 - Projects data updated to resume items; project images are rendered when `project.image` is provided in `DATA.projects` (fallback preview otherwise).
 
 ## Placeholder map
-- Domain & assets: Currently set to `https://example.com` (safe default for runtime). Replace with your actual domain. `[YOUR_PROFILE_IMAGE]` (path under `/public`).
+- Domain & assets: Domain set to `https://www.vincentpacana.com`. `[YOUR_PROFILE_IMAGE]` (path under `/public`).
 - Tech stack: `[KEY_TECH_1]`, `[KEY_TECH_2]`, `[KEY_TECH_3]`.
 - Bio: `[SHORT_BIO]`.
 - Projects (used in JSON-LD): `[PROJECT_1_NAME]`, `[PROJECT_1_DESC]`, `[PROJECT_1_URL]`, `[PROJECT_2_*]`, `[PROJECT_3_*]`.

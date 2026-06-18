@@ -17,7 +17,7 @@ export default function Education() {
           <h2 className="text-2xl font-bold tracking-wide">Education</h2>
         </div>
 
-        <div className="flex flex-row gap-6 max-w-6xl mx-auto overflow-x-auto pb-4">
+        <div className="flex flex-row gap-6 max-w-6xl mx-auto overflow-x-auto pb-4 justify-center">
           {DATA.education.map((edu, index) => (
             <div
               key={index}

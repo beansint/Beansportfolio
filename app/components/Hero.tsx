@@ -1,8 +1,43 @@
+"use client";
+
 import { DATA } from "../data";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
+  const handleContactScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    if (!href) return;
+
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+
+          if (elem) {
+            const targetPosition = elem.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 200;
+            let start: number | null = null;
+      const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      };
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <section
       id="home"
@@ -39,24 +74,34 @@ export default function Hero() {
             <p className="text-gray-400 max-w-lg mx-auto md:mx-0 text-lg">
               {DATA.profile.bio}
             </p>
-            
+
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-              <button className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors">
+              <a
+                href="#contact"
+                onClick={handleContactScroll}
+                className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors cursor-pointer"
+              >
                 Contact Me <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group">
-                Download CV <Download className="w-4 h-4 group-hover:text-accent transition-colors" />
-              </button>
+              </a>
+              <a
+                href={DATA.profile.resumeUrl}
+                download
+                className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group"
+                aria-label="Download Vincent Pacaña resume"
+              >
+                Download CV{" "}
+                <Download className="w-4 h-4 group-hover:text-accent transition-colors" />
+              </a>
             </div>
           </div>
-          
+
           <div className="relative">
             <div className="w-100 h-100 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
                <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
                <div className="absolute inset-3 rounded-full border border-accent/25 animate-[spin_26s_linear_infinite]" />
                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
-                 <Image
-                   src="/2x2.jpg"
+                <Image
+                   src="/images/personal/2x2.jpg"
                    alt={`${DATA.profile.name} profile picture`}
                    fill
                    className="object-cover"
@@ -64,12 +109,12 @@ export default function Hero() {
                  />
                </div>
             </div>
-            
+
             {/* Decorative background elements */}
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-accent/6 rounded-full blur-[140px]" />
           </div>
         </div>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 border-t border-white/5 pt-12">
           {DATA.profile.stats.map((stat, index) => (
             <div key={index} className="text-center md:text-left">
@@ -108,4 +153,3 @@ export default function Hero() {
     </section>
   );
 }
-
