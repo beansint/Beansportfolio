@@ -4,13 +4,13 @@ export const DATA = {
   profile: {
     name: "Vincent B. Pacaña",
     role: "Full Stack Developer",
-    bio: "Full-stack developer based in Cebu City focused on building real systems that solve real business problems, from user-facing applications to backend and cloud infrastructure.",
+    bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
     location: "Cebu City, Philippines",
     resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
     stats: [
       { label: "Age", value: "23" },
       { label: "Years of experience", value: "2" },
-      { label: "Projects worked on", value: "6" },
+      { label: "Projects worked on", value: "7" },
       { label: "Certifications", value: "6" },
     ],
   },
@@ -34,40 +34,64 @@ export const DATA = {
   skills: {
     languages: "English and Filipino; comfortable collaborating with distributed teams",
     techStack: [
-      "NEXT.Js",
-      "Node.js",
+      "Next.js",
+      "NestJS",
       "React",
+      "Flutter",
+      "Node.js",
       "Spring Boot",
       "Python (FastAPI, Django, Flask)",
       "PostgreSQL",
+      "Redis",
+      "RAG / LLMs",
       "Stripe",
+      "Tailwind",
     ],
     learning: "Currently learning at CIT-U and working on projects",
   },
   projects: [
     {
-      title: "Wildcat Radio",
+      title: "Wildcat Radio v2",
       description:
-        "Web-based radio broadcasting for CIT-U Wildcat Radio; co-led architecture, cloud VMs, and main broadcasting features.",
-      tech: ["Spring Boot", "Flask", "Icecast", "React", "PostgreSQL"],
+        "Lead developer on a production rebuild of CIT-U's campus internet radio: a contract-first NestJS backend, live HLS audio streaming, and a realtime layer (chat, song requests, polls, live listener presence) over WebSockets, plus a desktop studio app for broadcasting.",
+      tech: ["Next.js", "NestJS", "PostgreSQL", "WebSockets", "HLS"],
       link: "https://wildcat-radio.live/",
       image: "/images/projects/wildcatradio.png",
     },
     {
-      title: "Studyboost.com",
+      title: "SportRules AI",
       description:
-        "Full-stack e-commerce for a client; payment processing (Stripe), affiliates, tech plans, cloud storage, and bulk data import.",
-      tech: ["Spring Boot", "React", "PostgreSQL", "Stripe"],
-      link: "https://studyboost.com/",
-      image: "/images/projects/studyboost.png",
+        "A RAG (retrieval-augmented generation) Q&A app over official sports rulebooks (NBA/NFL/MLB/FIFA) that returns cited, source-grounded answers. Built on a pluggable multi-provider LLM registry with per-query cost tracking.",
+      tech: ["Next.js", "TypeScript", "Supabase", "pgvector", "LLMs"],
+      link: "",
+      github: "https://github.com/beansint/sports-rulebook-rag-ai",
+      image: "/images/projects/sportrules.png",
     },
     {
-      title: "Project Chimera (Web Game)",
+      title: "textpour",
       description:
-        "4-hour hackathon-winning web game; co-built mechanics, logic design, and technical foundation.",
-      tech: ["HTML", "JavaScript", "CSS"],
-      link: "#",
-      image: "/images/projects/hackathon.png",
+        "My open-source, render-agnostic text-geometry library (published on npm) that flows text into arbitrary shapes - circles, holes, polygons, glyphs - and reflows live. The interactive demo in this card runs on the library itself; move your cursor over it.",
+      tech: ["TypeScript", "Canvas", "npm", "Open Source"],
+      link: "https://www.npmjs.com/package/textpour",
+      github: "https://github.com/beansint/textpour",
+      image: "",
+      interactive: true,
+    },
+    {
+      title: "Three H Redwood International School",
+      description:
+        "A static school website built end-to-end on Next.js / Vercel with full technical SEO (structured data, dynamic sitemap, analytics). Ranks on the first page of Google and scores a perfect 100 desktop Lighthouse across every page.",
+      tech: ["Next.js", "Vercel", "SEO", "Tailwind"],
+      link: "https://threehredwood.edu.ph",
+      image: "/images/projects/3h.png",
+    },
+    {
+      title: "Studyboost",
+      description:
+        "A full-stack e-commerce platform built with a small team (in development): contributed to the backend migration from Spring Boot to NestJS, Stripe payment integration, and an affiliate program.",
+      tech: ["Next.js", "NestJS", "PostgreSQL", "Stripe"],
+      link: "https://studyboost.com/",
+      image: "/images/projects/studyboost.png",
     },
     {
       title: "BlockNotes",
@@ -76,6 +100,15 @@ export const DATA = {
       tech: ["Django", "Cardano", "CIP-30", "Blaze SDK", "Vite", "Python", "Blockfrost"],
       link: "",
       image: "/images/projects/blocknotes-blockchain-notepad.png",
+    },
+    {
+      title: "Project Chimera (Web Game)",
+      description:
+        "A 4-hour hackathon-winning web game; co-built mechanics, logic design, and technical foundation.",
+      tech: ["HTML", "JavaScript", "CSS"],
+      link: "https://project-chimera-hackathon.netlify.app/",
+      image: "/images/projects/chimera.mp4",
+      poster: "/images/projects/chimera-poster.jpg",
     },
   ],
   experience: [

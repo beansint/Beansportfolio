@@ -29,7 +29,13 @@ import {
   SiJavascript,
   SiNpm,
   SiPipx,
-  SiDocker
+  SiDocker,
+  SiNestjs,
+  SiFlutter,
+  SiRedis,
+  SiSocketdotio,
+  SiCloudflare,
+  SiVercel
 } from "react-icons/si";
 
 const TECH_ICONS: Record<string, React.ElementType> = {
@@ -55,7 +61,13 @@ const TECH_ICONS: Record<string, React.ElementType> = {
   "JavaScript": SiJavascript,
   "NPM": SiNpm,
   "PIP": SiPipx,
-  "Docker": SiDocker
+  "Docker": SiDocker,
+  "NestJS": SiNestjs,
+  "Flutter": SiFlutter,
+  "Redis": SiRedis,
+  "WebSockets": SiSocketdotio,
+  "Cloudflare R2": SiCloudflare,
+  "Vercel": SiVercel
 };
 
 const BRAND_COLORS: Record<string, string> = {
@@ -81,7 +93,13 @@ const BRAND_COLORS: Record<string, string> = {
   "JavaScript": "#F7DF1E",
   "NPM": "#CB3837",
   "PIP": "#0072B1",
-  "Docker": "#2496ED"
+  "Docker": "#2496ED",
+  "NestJS": "#E0234E",
+  "Flutter": "#02569B",
+  "Redis": "#FF4438",
+  "WebSockets": "#FFFFFF",
+  "Cloudflare R2": "#F38020",
+  "Vercel": "#FFFFFF"
 };
 
 const EXPERIENCE_DATA = [
@@ -90,12 +108,12 @@ const EXPERIENCE_DATA = [
     description: "End to end ownership of real production systems.",
     icon: Layers,
     bullets: [
-      "Built and shipped full stack apps using React, Spring Boot, Django, and PostgreSQL",
+      "Built and shipped full stack apps with Next.js, NestJS, React, and PostgreSQL",
       "Converted client requirements into technical implementation plans",
       "Owned backend APIs, frontend flows, data models, and deployments",
-      "Delivered monetized features like Stripe payments and affiliate workflows"
+      "Shipped realtime, AI (RAG), and payment features in production"
     ],
-    tags: []
+    tags: ["Next.js", "NestJS", "Flutter", "PostgreSQL", "Microservices"]
   },
   {
     title: "Frontend Engineering",
@@ -107,19 +125,19 @@ const EXPERIENCE_DATA = [
       "Aligned frontend data flows with backend API contracts",
       "Shipped production UI, not just mockups"
     ],
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "Client Routing", "NPM"]
+    tags: ["Next.js", "React", "Flutter", "TypeScript", "Tailwind CSS", "Vite", "NPM"]
   },
   {
     title: "Backend & API Systems",
     description: "Scalable server side systems with clean boundaries.",
     icon: Terminal,
     bullets: [
-      "Designed and built REST APIs with Spring Boot, Django, and FastAPI",
+      "Designed and built REST APIs with NestJS, Spring Boot, Django, and FastAPI",
       "Modeled relational schemas and optimized queries for real use",
       "Implemented authentication using JWT and OAuth style flows",
-      "Integrated external services and async workflows when needed"
+      "Built realtime features over WebSockets and event-driven data sync with queues"
     ],
-    tags: ["Node.js", "JavaScript", "Java", "Python", "Spring Boot", "Django", "FastAPI", "PostgreSQL", "MySQL", "JWT", "PIP"]
+    tags: ["NestJS", "Node.js", "Java", "Python", "Spring Boot", "Django", "FastAPI", "PostgreSQL", "Redis", "WebSockets", "JWT"]
   },
   {
     title: "Cloud & Deployment",
@@ -131,7 +149,7 @@ const EXPERIENCE_DATA = [
       "Set up CI CD pipelines using GitHub Actions",
       "Designed cloud storage workflows for documents and media"
     ],
-    tags: ["AWS", "GCP", "Linux", "GitHub Actions", "Cloud Storage", "DNS", "SSL", "Docker"]
+    tags: ["AWS", "GCP", "Cloudflare R2", "Vercel", "Neon", "Linux", "GitHub Actions", "DNS", "SSL", "Docker"]
   },
   {
     title: "Security Aware Development",
@@ -160,9 +178,9 @@ const EXPERIENCE_DATA = [
 ];
 
 const HIGHLIGHTS = [
-  { label: "Delivery", value: "4 person team delivery" },
-  { label: "Payments", value: "Stripe payments shipped" },
-  { label: "Data", value: "80% bulk data import completed" }
+  { label: "Scope", value: "Production systems, web + mobile" },
+  { label: "Features", value: "Realtime, AI (RAG) & Stripe payments shipped" },
+  { label: "Open Source", value: "Published an npm library" }
 ];
 
 export default function Experience() {

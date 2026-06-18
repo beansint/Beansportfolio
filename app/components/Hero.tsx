@@ -9,10 +9,10 @@ export default function Hero() {
     e.preventDefault();
     const href = e.currentTarget.getAttribute("href");
     if (!href) return;
-    
+
     const targetId = href.replace("#", "");
     const elem = document.getElementById(targetId);
-    
+
           if (elem) {
             const targetPosition = elem.getBoundingClientRect().top + window.scrollY;
             const startPosition = window.scrollY;
@@ -74,7 +74,7 @@ export default function Hero() {
             <p className="text-gray-400 max-w-lg mx-auto md:mx-0 text-lg">
               {DATA.profile.bio}
             </p>
-            
+
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
               <a
                 href="#contact"
@@ -94,7 +94,7 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          
+
           <div className="relative">
             <div className="w-100 h-100 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
                <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
@@ -109,12 +109,12 @@ export default function Hero() {
                  />
                </div>
             </div>
-            
+
             {/* Decorative background elements */}
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-accent/6 rounded-full blur-[140px]" />
           </div>
         </div>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 border-t border-white/5 pt-12">
           {DATA.profile.stats.map((stat, index) => (
             <div key={index} className="text-center md:text-left">

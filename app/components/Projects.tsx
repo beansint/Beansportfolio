@@ -11,20 +11,47 @@ import {
   SiFlask,
   SiHtml5,
   SiJavascript,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNpm,
   SiPostgresql,
   SiPython,
   SiReact,
   SiSpringboot,
   SiStripe,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
   SiVite,
 } from "react-icons/si";
 
 import { DATA } from "../data";
+import TextpourField from "./TextpourField";
 
-type Project = (typeof DATA.projects)[number] & { github?: string };
+type Project = (typeof DATA.projects)[number] & {
+  github?: string;
+  interactive?: boolean;
+  poster?: string;
+};
+
+const isVideo = (src?: string) => Boolean(src && src.endsWith(".mp4"));
 
 const TECH_ICON_MAP: Record<string, React.ElementType> = {
   react: SiReact,
+  "next.js": SiNextdotjs,
+  nextjs: SiNextdotjs,
+  nestjs: SiNestjs,
+  "node.js": SiNodedotjs,
+  nodejs: SiNodedotjs,
+  node: SiNodedotjs,
+  typescript: SiTypescript,
+  ts: SiTypescript,
+  supabase: SiSupabase,
+  tailwind: SiTailwindcss,
+  vercel: SiVercel,
+  npm: SiNpm,
   "spring boot": SiSpringboot,
   springboot: SiSpringboot,
   flask: SiFlask,
@@ -156,48 +183,70 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch">
-          <div
-            role="button"
-            tabIndex={0}
-            aria-pressed={isZoomed}
-            onClick={handleImageActivate}
-            onKeyDown={handleImageActivate}
-            className={`relative w-full overflow-hidden bg-gray-900 min-h-[24rem] md:min-h-[30rem] ${
-              isZoomed ? "cursor-zoom-out" : "cursor-zoom-in"
-            }`}
-          >
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                setZoomOrigin("50% 50%");
-                toggleZoom();
-              }}
-              className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur border border-white/10 hover:bg-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            >
-              <Maximize2 className="h-4 w-4" />
-              {isZoomed ? "Reset" : "Zoom"}
-            </button>
-
-            {project.image ? (
-              <Image
+          {project.interactive ? (
+            <div className="relative w-full overflow-hidden bg-[#0d0d0f] min-h-[24rem] md:min-h-[30rem]">
+              <TextpourField presence={0.85} />
+              <span className="pointer-events-none absolute bottom-3 left-4 text-xs font-mono text-white/40">
+                move your cursor - the text reflows live
+              </span>
+            </div>
+          ) : isVideo(project.image) ? (
+            <div className="relative flex w-full items-center justify-center overflow-hidden bg-black min-h-[24rem] md:min-h-[30rem]">
+              <video
                 src={project.image}
-                alt={project.title}
-                fill
-                priority
-                sizes="(min-width: 1280px) 50vw, 100vw"
-                style={{ transformOrigin: zoomOrigin }}
-                className={`object-contain transition-transform duration-700 ease-out ${
-                  isZoomed ? "scale-110 md:scale-[1.18]" : "scale-100"
-                }`}
+                poster={project.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="h-full w-full object-contain"
               />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-400">
-                No preview available
-              </div>
-            )}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-          </div>
+            </div>
+          ) : (
+            <div
+              role="button"
+              tabIndex={0}
+              aria-pressed={isZoomed}
+              onClick={handleImageActivate}
+              onKeyDown={handleImageActivate}
+              className={`relative w-full overflow-hidden bg-gray-900 min-h-[24rem] md:min-h-[30rem] ${
+                isZoomed ? "cursor-zoom-out" : "cursor-zoom-in"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setZoomOrigin("50% 50%");
+                  toggleZoom();
+                }}
+                className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur border border-white/10 hover:bg-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <Maximize2 className="h-4 w-4" />
+                {isZoomed ? "Reset" : "Zoom"}
+              </button>
+
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 50vw, 100vw"
+                  style={{ transformOrigin: zoomOrigin }}
+                  className={`object-contain transition-transform duration-700 ease-out ${
+                    isZoomed ? "scale-110 md:scale-[1.18]" : "scale-100"
+                  }`}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-400">
+                  No preview available
+                </div>
+              )}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+            </div>
+          )}
 
           <div className="p-6 md:p-8 flex flex-col gap-4 max-h-[96vh] overflow-y-auto">
             <div className="space-y-2">
@@ -291,13 +340,28 @@ export default function Projects() {
               className="group text-left bg-card-bg border border-card-border rounded-3xl p-6 hover:border-accent/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card-bg cursor-pointer"
             >
               <div className="relative w-full mb-6 rounded-2xl overflow-hidden bg-gray-800 min-h-[220px]">
-                {project.image ? (
+                {project.interactive ? (
+                  <div className="absolute inset-0 bg-[#0d0d0f]">
+                    <TextpourField presence={0.72} />
+                  </div>
+                ) : isVideo(project.image) ? (
+                  <video
+                    src={project.image}
+                    poster={project.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-label={`${project.title} gameplay`}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : project.image ? (
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     sizes="(min-width: 1024px) 540px, 100vw"
-                    className="object-contain transition-transform duration-500"
+                    className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                     priority={index < 2}
                   />
                 ) : (
@@ -305,7 +369,7 @@ export default function Projects() {
                     Project preview
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
               <div className="flex items-start justify-between gap-3 mb-2">
