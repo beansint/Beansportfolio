@@ -224,7 +224,7 @@ export default function Experience() {
             >
               <div className="flex items-start justify-between mb-4">
                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-accent transition-colors">
                       {exp.title}
                     </h3>
                     <p className="text-gray-400 text-sm mt-1">

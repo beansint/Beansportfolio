@@ -40,13 +40,13 @@ export default function ShortProfile() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Short profile */}
-          <div className="md:col-span-2 bg-card-bg border border-card-border rounded-3xl p-8 relative overflow-hidden min-h-[260px] group">
+          <div className="md:col-span-2 bg-card-bg border border-card-border rounded-3xl p-6 md:p-8 relative overflow-hidden min-h-[260px] group">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative z-10 h-full flex flex-col justify-between gap-4">
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent/80">
                 Short profile
               </p>
-              <p className="text-2xl font-medium leading-relaxed max-w-xl text-gray-100">
+              <p className="text-xl md:text-2xl font-medium leading-relaxed max-w-xl text-gray-100">
                 Full-stack developer based in Cebu City building practical,
                 production-ready systems that solve real business problems, from
                 user-facing applications to backend and cloud infrastructure.
