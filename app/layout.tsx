@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DATA } from "./data";
+import { SITE_URL } from "./site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,9 +33,13 @@ const NAME = DATA.profile.name;
 const ROLE = DATA.profile.role;
 const LOCATION = DATA.profile.location;
 const BIO = DATA.profile.bio;
-// Production domain
-const DOMAIN = "https://www.vincentpacana.com";
+const DOMAIN = SITE_URL;
 const PROFILE_IMAGE = "images/personal/2x2.jpg";
+// First token is the given name; last token is the surname. Any middle
+// token (e.g. the "B." initial) is intentionally excluded from familyName.
+const NAME_PARTS = NAME.split(" ");
+const GIVEN_NAME = NAME_PARTS[0];
+const FAMILY_NAME = NAME_PARTS[NAME_PARTS.length - 1];
 const TECH = DATA.skills.techStack;
 const TECH_1 = TECH[0];
 const TECH_2 = TECH[1];
@@ -71,12 +76,12 @@ const structuredData = {
         "@type": "Person",
         "@id": `${DOMAIN}/#person`,
         name: NAME,
-        givenName: NAME.split(" ")[0],
-        familyName: NAME.split(" ").slice(1).join(" "),
+        givenName: GIVEN_NAME,
+        familyName: FAMILY_NAME,
         jobTitle: ROLE,
         description: BIO,
         url: DOMAIN,
-        email: `mailto:${DATA.contact.email}`,
+        email: DATA.contact.email,
         image: {
           "@type": "ImageObject",
           url: `${DOMAIN}/${PROFILE_IMAGE}`,
@@ -139,8 +144,8 @@ export const metadata: Metadata = {
     title: `${NAME} - ${ROLE} | Portfolio`,
     description: BIO,
     siteName: `${NAME} Portfolio`,
-    firstName: NAME.split(" ")[0],
-    lastName: NAME.split(" ").slice(1).join(" "),
+    firstName: GIVEN_NAME,
+    lastName: FAMILY_NAME,
   },
   twitter: {
     card: "summary_large_image",

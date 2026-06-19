@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://www.vincentpacana.com";
+import { SITE_URL } from "./site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: BASE_URL,
+      // Trailing slash to match the canonical URL (metadataBase + "/").
+      url: `${SITE_URL}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
