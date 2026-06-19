@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
@@ -118,6 +118,12 @@ const structuredData = {
 };
 
 const DESCRIPTION = `${NAME} is a ${ROLE} based in ${LOCATION}. Specializing in ${TECH_1}, ${TECH_2}, and ${TECH_3}. View projects and contact details.`;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: `${NAME} - ${ROLE} | Portfolio`,

@@ -171,13 +171,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} details`}
-        className="relative w-full max-w-6xl md:max-w-7xl bg-card-bg/92 border border-card-border rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl transition-transform duration-300 ease-out max-h-[96vh]"
+        className="relative w-full max-w-6xl md:max-w-7xl bg-card-bg/92 border border-card-border rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl transition-transform duration-300 ease-out max-h-[96dvh]"
       >
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-20 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/10 border border-white/10 text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          className="absolute right-4 top-4 z-20 inline-flex items-center justify-center h-11 w-11 rounded-full bg-white/10 border border-white/10 text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           aria-label="Close project details"
         >
           <X className="h-5 w-5" />
@@ -185,14 +185,14 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch">
           {project.interactive ? (
-            <div className="relative w-full overflow-hidden bg-[#0d0d0f] min-h-[24rem] md:min-h-[30rem]">
+            <div className="relative w-full overflow-hidden bg-[#0d0d0f] min-h-[14rem] md:min-h-[30rem]">
               <TextpourField presence={0.85} />
               <span className="pointer-events-none absolute bottom-3 left-4 text-xs font-mono text-white/40">
                 move your cursor - the text reflows live
               </span>
             </div>
           ) : isVideo(project.image) ? (
-            <div className="relative flex w-full items-center justify-center overflow-hidden bg-black min-h-[24rem] md:min-h-[30rem]">
+            <div className="relative flex w-full items-center justify-center overflow-hidden bg-black min-h-[14rem] md:min-h-[30rem]">
               <video
                 src={project.image}
                 poster={project.poster}
@@ -211,7 +211,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               aria-pressed={isZoomed}
               onClick={handleImageActivate}
               onKeyDown={handleImageActivate}
-              className={`relative w-full overflow-hidden bg-gray-900 min-h-[24rem] md:min-h-[30rem] ${
+              className={`relative w-full overflow-hidden bg-gray-900 min-h-[14rem] md:min-h-[30rem] ${
                 isZoomed ? "cursor-zoom-out" : "cursor-zoom-in"
               }`}
             >
@@ -234,7 +234,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   alt={project.title}
                   fill
                   priority
-                  sizes="(min-width: 1280px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 50vw, (min-width: 768px) 70vw, 100vw"
                   style={{ transformOrigin: zoomOrigin }}
                   className={`object-contain transition-transform duration-700 ease-out ${
                     isZoomed ? "scale-110 md:scale-[1.18]" : "scale-100"
@@ -249,7 +249,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </div>
           )}
 
-          <div className="p-6 md:p-8 flex flex-col gap-4 max-h-[96vh] overflow-y-auto">
+          <div className="p-6 md:p-8 flex flex-col gap-4 max-h-[96dvh] overflow-y-auto">
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.2em] text-accent/80">Project</p>
               <h3 className="text-2xl md:text-3xl font-bold text-white leading-snug">{project.title}</h3>
@@ -363,7 +363,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(min-width: 1024px) 540px, 100vw"
+                    sizes="(min-width: 1024px) 540px, (min-width: 768px) 50vw, 100vw"
                     className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
                     priority={index < 2}
                   />
@@ -377,7 +377,7 @@ export default function Projects() {
 
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">{project.title}</h3>
                   <p className="text-gray-400 text-sm line-clamp-2 max-w-sm">
                     {project.description}
                   </p>

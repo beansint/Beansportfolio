@@ -54,10 +54,10 @@ export default function Footer() {
                         id="contact-title"
                         className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
                     >
-                        Let's Work Together
+                        Let&apos;s Work Together
                     </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-                        Have a project in mind or just want to say hi? I'm always open to discussing new opportunities and ideas.
+                    <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-md">
+                        Have a project in mind or just want to say hi? I&apos;m always open to discussing new opportunities and ideas.
                     </p>
                 </div>
 
@@ -112,23 +112,25 @@ export default function Footer() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-medium text-gray-300">Name</label>
-                            <input 
-                                type="text" 
-                                id="name" 
+                            <input
+                                type="text"
+                                id="name"
                                 name="name"
                                 required
-                                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                                autoComplete="name"
+                                className="w-full min-h-[44px] bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
                                 placeholder="John Doe"
                             />
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="email" className="text-sm font-medium text-gray-300">Email</label>
-                            <input 
-                                type="email" 
-                                id="email" 
+                            <input
+                                type="email"
+                                id="email"
                                 name="email"
                                 required
-                                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                                autoComplete="email"
+                                className="w-full min-h-[44px] bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
                                 placeholder="john@example.com"
                             />
                         </div>
@@ -136,12 +138,12 @@ export default function Footer() {
                     
                     <div className="space-y-2">
                         <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
-                        <input 
-                            type="text" 
-                            id="subject" 
+                        <input
+                            type="text"
+                            id="subject"
                             name="subject"
                             required
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                            className="w-full min-h-[44px] bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
                             placeholder="Project inquiry..."
                         />
                     </div>

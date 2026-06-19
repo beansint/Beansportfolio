@@ -12,7 +12,7 @@ export default function Timeline() {
       <div className="container mx-auto px-4 md:px-6">
         <h2
           id="timeline-title"
-          className="text-3xl font-bold tracking-tight text-left mb-10 max-w-5xl mx-auto bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
+          className="text-2xl md:text-3xl font-bold tracking-tight text-left mb-10 max-w-5xl mx-auto bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
         >
           My Journey
         </h2>
