@@ -29,6 +29,7 @@ import {
 
 import { DATA } from "../data";
 import TextpourField from "./TextpourField";
+import { sendGAEvent } from "@next/third-parties/google";
 
 type Project = (typeof DATA.projects)[number] & {
   github?: string;
@@ -278,6 +279,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'project_click', { project_name: project.title })}
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-black transition hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-card-bg"
                 >
                   <LinkIcon className="h-4 w-4" />
@@ -291,6 +293,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => sendGAEvent('event', 'project_click', { project_name: project.title })}
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15 hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-card-bg"
                 >
                   <Github className="h-4 w-4" />

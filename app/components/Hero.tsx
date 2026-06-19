@@ -2,6 +2,7 @@
 
 import { DATA } from "../data";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 import Image from "next/image";
 
 export default function Hero() {
@@ -86,6 +87,7 @@ export default function Hero() {
               <a
                 href={DATA.profile.resumeUrl}
                 download
+                onClick={() => sendGAEvent('event', 'resume_download', { location: 'hero' })}
                 className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group"
                 aria-label="Download Vincent Pacaña resume"
               >

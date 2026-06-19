@@ -3,6 +3,7 @@
 import { DATA } from "../data";
 import { ArrowRight, Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export default function Footer() {
   const [formState, setFormState] = useState<{
@@ -13,7 +14,8 @@ export default function Footer() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState({ status: 'submitting', message: '' });
-    
+    sendGAEvent('event', 'contact_submit');
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
     setFormState({ status: 'success', message: 'Message sent successfully!' });
@@ -185,6 +187,9 @@ export default function Footer() {
           <p>© 2025 {DATA.profile.name}. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Built with Next.js & Tailwind CSS</p>
         </div>
+        <p className="mt-4 text-xs text-gray-600 text-center">
+          This site uses Google Analytics and Vercel Analytics to understand traffic.
+        </p>
       </div>
       
        {/* Decorative bottom glow */}
