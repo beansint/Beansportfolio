@@ -69,7 +69,7 @@ export default function Hero() {
               id="home-title"
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             >
-              Hello I'm <br />
+              Hello I&apos;m <br />
               <span className="text-accent">{DATA.profile.name}</span>
             </h1>
             <p className="text-gray-400 max-w-lg mx-auto md:mx-0 text-lg">
@@ -98,7 +98,7 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="w-100 h-100 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
+            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
                <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
                <div className="absolute inset-3 rounded-full border border-accent/25 animate-[spin_26s_linear_infinite]" />
                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
@@ -113,7 +113,7 @@ export default function Hero() {
             </div>
 
             {/* Decorative background elements */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] bg-accent/6 rounded-full blur-[140px]" />
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] max-w-[100vw] max-h-[100vw] bg-accent/6 rounded-full blur-[140px]" />
           </div>
         </div>
 

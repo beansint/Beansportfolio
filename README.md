@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Responsive design
+
+The site is mobile-first and verified across a range of viewport widths (320 / 360 / 375 / 414 / 768 / 1024 / 1440 px). Key behaviours:
+
+- **Navigation** collapses to an accessible hamburger drawer below the `md` breakpoint (Escape-to-close, focus-visible rings, `prefers-reduced-motion` aware) and shows inline links from `md` up.
+- **No horizontal overflow** at any supported width.
+- The viewport is configured via the `viewport` export in `app/layout.tsx` (zoom is intentionally **not** disabled, for accessibility).
+
+## Testing
+
+End-to-end responsive checks run with [Playwright](https://playwright.dev):
+
+```bash
+npm run test:e2e
+```
+
+The config (`playwright.config.ts`) starts the dev server automatically. Tests live in `tests/e2e/` and assert no horizontal overflow, correct mobile/desktop navigation, and that the hero avatar fits within the viewport. First-time setup may require `npx playwright install chromium`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
