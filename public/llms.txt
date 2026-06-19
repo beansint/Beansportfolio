@@ -1,0 +1,47 @@
+# Vincent B. Pacaña
+
+> Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.
+
+Based in Cebu City, Philippines, Vincent is a 23-year-old Full Stack Developer currently pursuing a Bachelor of Science in Information Technology at Cebu Institute of Technology - University. He builds production SaaS products, AI-powered tools, and realtime platforms, and is open to freelance and collaborative work.
+
+## Projects
+
+- [Wildcat Radio v2](https://wildcat-radio.live/): Lead developer on a production rebuild of CIT-U's campus internet radio — contract-first NestJS backend, live HLS audio streaming, realtime chat/requests/polls over WebSockets, and a desktop studio broadcasting app. Tech: Next.js, NestJS, PostgreSQL, WebSockets, HLS.
+- [SportRules AI](https://github.com/beansint/sports-rulebook-rag-ai): RAG Q&A app over official sports rulebooks (NBA/NFL/MLB/FIFA) returning cited, source-grounded answers via a pluggable multi-provider LLM registry with per-query cost tracking. Tech: Next.js, TypeScript, Supabase, pgvector, LLMs.
+- [textpour](https://www.npmjs.com/package/textpour): Open-source, render-agnostic text-geometry npm library that flows text into arbitrary shapes — circles, holes, polygons, glyphs — with live reflow. Tech: TypeScript, Canvas. Also on [GitHub](https://github.com/beansint/textpour).
+- [Three H Redwood International School](https://threehredwood.edu.ph): Static school website on Next.js/Vercel with full technical SEO (structured data, dynamic sitemap, analytics); ranks on page one of Google and scores a perfect 100 desktop Lighthouse on every page. Tech: Next.js, Vercel, Tailwind, SEO.
+- [Studyboost](https://studyboost.com/): Full-stack e-commerce platform (in development) — contributed backend migration from Spring Boot to NestJS, Stripe payment integration, and an affiliate program. Tech: Next.js, NestJS, PostgreSQL, Stripe.
+- [BlockNotes](https://github.com/beansint): Blockchain Django web app on Cardano with immutable payment-linked notes, CIP-30 wallet integration (Lace/Eternl) via Blaze SDK, client-side signing, and REST APIs for async transaction logging with Blockfrost. Tech: Django, Python, Cardano, Blaze SDK, Vite, Blockfrost.
+- [Project Chimera (Web Game)](https://project-chimera-hackathon.netlify.app/): Hackathon-winning web game co-built in 4 hours — mechanics, logic design, and technical foundation. Won Proweaver PromptQuest 2025. Tech: HTML, JavaScript, CSS.
+
+## Skills
+
+- Frontend: Next.js, React, Flutter, Tailwind CSS
+- Backend: NestJS, Node.js, Spring Boot, Python (FastAPI, Django, Flask)
+- Databases & caching: PostgreSQL, Redis
+- Cloud & DevOps: AWS (Cloud Foundations & Cloud Architecting certified), Vercel, Docker (learning), Kubernetes (learning), CI/CD
+- AI / ML: RAG pipelines, LLM integrations, pgvector, multi-provider LLM registries
+- Payments & integrations: Stripe, Blockfrost (Cardano)
+- Open source: published npm packages (textpour)
+- Languages: English and Filipino
+
+## Education
+
+- Cebu Institute of Technology - University — Bachelor of Science in Information Technology (2022 – Present)
+- Cebu Doctors University — Senior High School, With Honors (2019 – 2021)
+- Cebu Normal University — Junior High School, With Honors (2015 – 2019)
+
+## Achievements
+
+- Champion — Proweaver PromptQuest Hackathon 2025 (Sep 2025)
+- Capstone Top 11 Finalist — PitchPerfect 2025, CIT-U LaunchLab Pre-Acceleration Program (Nov 2025)
+- AWS Academy Graduate — Cloud Architecting (Dec 2025)
+- AWS Academy Graduate — Cloud Foundations (Sep 2025)
+- 6 certifications total; 7 production projects shipped
+
+## Links
+
+- Portfolio: https://www.vincentpacana.com
+- GitHub: https://github.com/beansint
+- LinkedIn: https://linkedin.com/in/vincentpacanab
+- Resume: https://www.vincentpacana.com/files/Vincent-Pacana-Resume.pdf
