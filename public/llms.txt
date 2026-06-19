@@ -41,7 +41,7 @@ Based in Cebu City, Philippines, Vincent is a 23-year-old Full Stack Developer c
 
 ## Links
 
-- Portfolio: https://www.vincentpacana.com
+- Portfolio: https://vincentpacana.com
 - GitHub: https://github.com/beansint
 - LinkedIn: https://linkedin.com/in/vincentpacanab
-- Resume: https://www.vincentpacana.com/files/Vincent-Pacana-Resume.pdf
+- Resume: https://vincentpacana.com/files/Vincent-Pacana-Resume.pdf

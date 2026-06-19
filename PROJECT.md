@@ -1,51 +1,46 @@
-# SEO & Semantic Implementation Notes (Updated with your identity)
+# SEO, GEO & Analytics — Implementation Notes
 
-Current identity filled in:
+Status: **implemented**. This documents the current setup (no outstanding placeholders).
+
+## Identity
 - Name: Vincent B. Pacaña
 - Role: Full Stack Developer
 - Location: Cebu City, Philippines
 - Email: vincentpacana0@gmail.com
 - GitHub: https://github.com/beansint
 - LinkedIn: https://linkedin.com/in/vincentpacanab
+- Production domain: **https://vincentpacana.com** (apex is canonical; `www` 301-redirects to it at the Vercel domain level)
 
-Still replace the remaining placeholders below.
+## Single source of truth
+- `app/site.ts` → `SITE_URL = "https://vincentpacana.com"`. Imported by `app/layout.tsx`, `app/sitemap.ts`, and `app/robots.ts`.
+- `public/llms.txt` is a static file and cannot import `SITE_URL` — update it by hand if the domain changes.
 
-## Files to update
-- `public/robots.txt` → set to `https://www.vincentpacana.com/sitemap.xml` (done).
-- `public/sitemap.xml` → set domain to `https://www.vincentpacana.com/` and lastmod to `2025-12-09` (update on next release as needed).
-- `app/layout.tsx` → domain set to `https://www.vincentpacana.com`; still replace bio/tech/project placeholders in JSON-LD when ready.
-- `app/components/Navbar.tsx` → nav links target `#professional`, `#personal`, and `#contact`.
-- `app/components/*` → section `id`/`aria-labelledby` are set; ensure they still match your final content.
-- Fonts: Montserrat (headings) and Poppins (body) added via `next/font/google`; body/headings wired in `globals.css`.
-- Icons: Font Awesome used in `app/components/Education.tsx` via `react-icons`.
-- Projects data updated to resume items; project images are rendered when `project.image` is provided in `DATA.projects` (fallback preview otherwise).
+## SEO
+- `app/layout.tsx` → Next.js Metadata API (title, description, keywords, canonical, OpenGraph, Twitter) sourced from `app/data.tsx`. JSON-LD (`ProfilePage` + `Person` with `knowsAbout`/`alumniOf`/`address`/`image`/`sameAs`, plus an `ItemList` of top projects) is injected as a script in `<body>`.
+- `app/sitemap.ts` → MetadataRoute sitemap, served at `/sitemap.xml`. `url` is `${SITE_URL}/` (trailing slash matches canonical); `lastModified: new Date()`.
+- `app/robots.ts` → MetadataRoute robots, served at `/robots.txt`. Allows all crawlers; `sitemap` + `host` reference `SITE_URL`.
+- `app/opengraph-image.tsx` → dynamic 1200×630 OG card via `next/og`; auto-wired to both `og:image` and `twitter:image`.
 
-## Placeholder map
-- Domain & assets: Domain set to `https://www.vincentpacana.com`. `[YOUR_PROFILE_IMAGE]` (path under `/public`).
-- Tech stack: `[KEY_TECH_1]`, `[KEY_TECH_2]`, `[KEY_TECH_3]`.
-- Bio: `[SHORT_BIO]`.
-- Projects (used in JSON-LD): `[PROJECT_1_NAME]`, `[PROJECT_1_DESC]`, `[PROJECT_1_URL]`, `[PROJECT_2_*]`, `[PROJECT_3_*]`.
-- Sitemap last modified: `[CURRENT_DATE_YYYY-MM-DD]` (set to today’s date when you finalize).
+## GEO (AI answer engines)
+- `public/llms.txt` → structured overview (summary, projects, skills, education, achievements, links) for ChatGPT / Perplexity / Claude.
+- `app/robots.ts` explicitly allows AI crawlers: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended.
 
-## How to replace
-1) Update `app/layout.tsx` constants at the top with real values. **Important:** Replace `DOMAIN = "https://example.com"` with your actual domain URL (e.g., `"https://vincentpacana.com"`).
-2) Put your profile image in `/public` and set `[YOUR_PROFILE_IMAGE]` to the filename (e.g., `profile.png`).
-3) Replace project placeholders in `structuredData` with your top 3 projects (name, 1–2 sentence description, live URL).
-4) Update domain in `robots.txt`, `sitemap.xml` (replace `https://example.com`), and ensure meta tags (canonical/OG/Twitter) use your real domain.
-5) If you add project screenshots, ensure each `<Image>` or `<img>` has a descriptive `alt`, e.g., “Screenshot of [PROJECT NAME] dashboard showing analytics charts.”
+## Analytics
+- GA4 via `@next/third-parties/google` — loads in production only when `NEXT_PUBLIC_GA_ID` is set (see `.env.example`).
+- Vercel Analytics + Speed Insights (`@vercel/analytics`, `@vercel/speed-insights`) — cookieless.
+- Custom events via `sendGAEvent`: `resume_download`, `project_click`, `contact_submit`.
 
-## Semantics summary
-- Single `<h1>` in `Hero` (`#home-title`).
-- Section headings use `<h2>`; project cards use `<h3>`.
-- Primary navigation uses `<nav><ul><li>` with anchor targets set to section IDs.
-- Sections include `id` and `aria-labelledby` for clarity.
+## Semantics
+- Single `<h1>` in `Hero` (`#home-title`); section headings `<h2>`, project cards `<h3>`.
+- Primary nav uses `<nav><ul><li>` anchored to section IDs; sections carry `id` + `aria-labelledby`.
+- All images use `next/image` with descriptive `alt`.
 
-## Important Notes
-- **Domain Fix:** The domain is currently set to `https://example.com` as a safe default to prevent runtime errors. This allows the app to run locally without crashing. Replace it with your actual domain before deploying.
-- The `new URL(DOMAIN)` call in `app/layout.tsx` requires a valid URL format, so the placeholder must be a real URL structure.
+## If the domain changes again
+1. Update `SITE_URL` in `app/site.ts`.
+2. Update the two URLs in `public/llms.txt`.
+3. Update the production/redirect domains in Vercel and redeploy.
+4. Re-validate structured data (https://search.google.com/test/rich-results) and resubmit the sitemap in Google Search Console.
 
-## After updating
-- Regenerate `public/sitemap.xml` lastmod with today’s date.
-- Run `npm run lint` to ensure no type or lint issues.
-- Deploy with your domain so canonical/OG URLs resolve correctly.
-
+## Verify
+- `npm run build` (CI runs the same `next build`).
+- Check `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/opengraph-image` resolve and use the apex domain.

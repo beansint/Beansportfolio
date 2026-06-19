@@ -63,14 +63,14 @@ const structuredData = {
     {
       "@type": "ProfilePage",
       "@id": `${DOMAIN}/#profilepage`,
-      url: `${DOMAIN}/`,
+      url: DOMAIN,
       name: `${NAME} - ${ROLE} | Portfolio`,
       inLanguage: "en",
       isPartOf: {
         "@type": "WebSite",
         "@id": `${DOMAIN}/#website`,
         name: `${NAME} Portfolio`,
-        url: `${DOMAIN}/`,
+        url: DOMAIN,
       },
       mainEntity: {
         "@type": "Person",
@@ -140,12 +140,15 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     type: "profile",
-    url: `${DOMAIN}/`,
+    url: DOMAIN,
     title: `${NAME} - ${ROLE} | Portfolio`,
     description: BIO,
     siteName: `${NAME} Portfolio`,
+    locale: "en_US",
     firstName: GIVEN_NAME,
     lastName: FAMILY_NAME,
+    // og:image / twitter:image (1200x630, absolute URL, alt) are auto-wired
+    // from app/opengraph-image.tsx via metadataBase — do not duplicate here.
   },
   twitter: {
     card: "summary_large_image",
