@@ -6,7 +6,7 @@ import { ArrowUpRight, Github, Link as LinkIcon, Maximize2, X } from "lucide-rea
 import Image from "next/image";
 import {
   SiCardano,
-  SiCss3,
+  SiCss,
   SiDjango,
   SiFlask,
   SiHtml5,
@@ -62,8 +62,8 @@ const TECH_ICON_MAP: Record<string, React.ElementType> = {
   html5: SiHtml5,
   javascript: SiJavascript,
   js: SiJavascript,
-  css: SiCss3,
-  css3: SiCss3,
+  css: SiCss,
+  css3: SiCss,
   django: SiDjango,
   cardano: SiCardano,
   vite: SiVite,

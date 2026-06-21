@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
@@ -29,9 +30,24 @@ export default function Navbar() {
       aria-label="Primary"
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <div className="font-bold text-xl tracking-tight">
-          Vincent Pacaña<span className="text-accent">.</span>
-        </div>
+        <a
+          href="#"
+          aria-label="Vincent Pacaña — home"
+          className="flex items-center gap-3 group"
+        >
+          <Image
+            src="/brand/vp-logo.svg"
+            alt="Vincent Pacaña logo"
+            width={120}
+            height={81}
+            priority
+            unoptimized
+            className="h-11 w-auto transition-transform group-hover:scale-105"
+          />
+          <span className="font-bold text-xl tracking-tight">
+            Vincent Pacaña<span className="text-accent">.</span>
+          </span>
+        </a>
 
         {/* Desktop navigation — unchanged */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
