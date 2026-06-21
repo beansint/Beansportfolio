@@ -47,9 +47,10 @@ export default function ShortProfile() {
                 Short profile
               </p>
               <p className="text-xl md:text-2xl font-medium leading-relaxed max-w-xl text-gray-100">
-                Full-stack developer based in Cebu City building practical,
-                production-ready systems that solve real business problems, from
-                user-facing applications to backend and cloud infrastructure.
+                Vincent B. Pacaña is a full-stack developer based in Cebu City,
+                building practical, production-ready systems that solve real
+                business problems — from user-facing applications to backend and
+                cloud infrastructure.
               </p>
             </div>
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 blur-[80px] rounded-full -mr-20 -mt-20 pointer-events-none" />

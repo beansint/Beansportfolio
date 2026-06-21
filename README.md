@@ -36,7 +36,13 @@ End-to-end responsive checks run with [Playwright](https://playwright.dev):
 npm run test:e2e
 ```
 
-The config (`playwright.config.ts`) starts the dev server automatically. Tests live in `tests/e2e/` and assert no horizontal overflow, correct mobile/desktop navigation, and that the hero avatar fits within the viewport. First-time setup may require `npx playwright install chromium`.
+The config (`playwright.config.ts`) starts the dev server automatically. Tests live in `tests/e2e/` and assert no horizontal overflow, correct mobile/desktop navigation, that the hero avatar fits within the viewport, and that the JSON-LD structured data (`structured-data.spec.ts`) exposes the Person/ItemList/FAQPage entity signals. First-time setup may require `npx playwright install chromium`.
+
+To run against an already-running server (e.g. a production build on another port, avoiding a port-3000 collision with another project), set `PLAYWRIGHT_BASE_URL` — this also disables the managed dev server:
+
+```bash
+PLAYWRIGHT_BASE_URL=http://localhost:3111 npx playwright test
+```
 
 ## Learn More
 
