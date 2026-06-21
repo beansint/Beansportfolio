@@ -32,7 +32,6 @@ const poppins = Poppins({
 const NAME = DATA.profile.name;
 const ROLE = DATA.profile.role;
 const LOCATION = DATA.profile.location;
-const BIO = DATA.profile.bio;
 const DOMAIN = SITE_URL;
 const PROFILE_IMAGE = "images/personal/2x2.jpg";
 // First token is the given name; last token is the surname. Any middle
@@ -51,11 +50,10 @@ const LINKEDIN_URL =
   DATA.contact.socials.find((s) => s.name === "LinkedIn")?.link ??
   "https://linkedin.com/in/vincentpacanab";
 
-// Top projects for the ItemList rich result, with a resolved public URL.
+// All projects for the ItemList rich result, with a resolved public URL.
 const featuredProjects = DATA.projects
   .map((p) => ({ ...p, url: p.link || p.github || "" }))
-  .filter((p) => p.url)
-  .slice(0, 3);
+  .filter((p) => p.url);
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -79,7 +77,8 @@ const structuredData = {
         givenName: GIVEN_NAME,
         familyName: FAMILY_NAME,
         jobTitle: ROLE,
-        description: BIO,
+        description: DATA.profile.summary,
+        disambiguatingDescription: DATA.profile.summary,
         url: DOMAIN,
         email: DATA.contact.email,
         image: {
@@ -91,12 +90,24 @@ const structuredData = {
           addressLocality: "Cebu City",
           addressCountry: "PH",
         },
+        nationality: { "@type": "Country", name: "Philippines" },
+        knowsLanguage: ["English", "Filipino"],
+        mainEntityOfPage: `${DOMAIN}/#profilepage`,
         knowsAbout: TECH,
-        alumniOf: {
-          "@type": "CollegeOrUniversity",
-          name: "Cebu Institute of Technology - University",
-        },
-        sameAs: [GITHUB_URL, LINKEDIN_URL],
+        alumniOf: DATA.education.map((edu, i) => ({
+          "@type": i === 0 ? "CollegeOrUniversity" : "EducationalOrganization",
+          name: edu.school,
+        })),
+        award: DATA.awards,
+        hasCredential: DATA.credentials.map((c) => ({
+          "@type": "EducationalOccupationalCredential",
+          name: c.name,
+          credentialCategory: c.category,
+          url: c.url,
+          dateCreated: c.date,
+          recognizedBy: { "@type": "Organization", name: c.issuer },
+        })),
+        sameAs: [GITHUB_URL, LINKEDIN_URL, DATA.profile.npm],
       },
     },
     {
@@ -111,7 +122,18 @@ const structuredData = {
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
           url: project.url,
+          author: { "@id": `${DOMAIN}/#person` },
+          keywords: project.tech.join(", "),
         },
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${DOMAIN}/#faq`,
+      mainEntity: DATA.faq.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
       })),
     },
   ],
@@ -148,7 +170,7 @@ export const metadata: Metadata = {
     type: "profile",
     url: DOMAIN,
     title: `${NAME} - ${ROLE} | Portfolio`,
-    description: BIO,
+    description: DATA.profile.summary,
     siteName: `${NAME} Portfolio`,
     locale: "en_US",
     firstName: GIVEN_NAME,
@@ -159,7 +181,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${NAME} - ${ROLE} | Portfolio`,
-    description: BIO,
+    description: DATA.profile.summary,
   },
 };
 
