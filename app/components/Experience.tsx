@@ -4,9 +4,10 @@ import {
   Cloud, 
   ShieldCheck, 
   Users, 
-  Layers 
+  Layers
 } from "lucide-react";
-import { 
+import { FaAws } from "react-icons/fa";
+import {
   SiReact, 
   SiSpringboot, 
   SiDjango, 
@@ -18,9 +19,8 @@ import {
   SiVite, 
   SiFastapi, 
   SiMysql, 
-  SiJsonwebtokens, 
-  SiAmazon, 
-  SiLinux, 
+  SiJsonwebtokens,
+  SiLinux,
   SiGithubactions, 
   SiOwasp, 
   SiBurpsuite,
@@ -51,7 +51,7 @@ const TECH_ICONS: Record<string, React.ElementType> = {
   "FastAPI": SiFastapi,
   "MySQL": SiMysql,
   "JWT": SiJsonwebtokens,
-  "AWS": SiAmazon,
+  "AWS": FaAws,
   "Linux": SiLinux,
   "GitHub Actions": SiGithubactions,
   "OWASP Top 10": SiOwasp,
