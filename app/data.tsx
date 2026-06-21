@@ -6,7 +6,6 @@ export const DATA = {
     role: "Full Stack Developer",
     bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
     summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems — microservices, realtime platforms, and performance-focused web — across TypeScript and Java backends with React/Next.js and Flutter frontends.",
-    nationality: "Filipino",
     npm: "https://www.npmjs.com/~beansint",
     location: "Cebu City, Philippines",
     resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
