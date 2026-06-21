@@ -66,7 +66,7 @@ const TECH_ICONS: Record<string, React.ElementType> = {
   "Flutter": SiFlutter,
   "Redis": SiRedis,
   "WebSockets": SiSocketdotio,
-  "Cloudflare R2": SiCloudflare,
+  "Cloudflare": SiCloudflare,
   "Vercel": SiVercel
 };
 
@@ -98,7 +98,7 @@ const BRAND_COLORS: Record<string, string> = {
   "Flutter": "#02569B",
   "Redis": "#FF4438",
   "WebSockets": "#FFFFFF",
-  "Cloudflare R2": "#F38020",
+  "Cloudflare": "#F38020",
   "Vercel": "#FFFFFF"
 };
 
@@ -149,7 +149,7 @@ const EXPERIENCE_DATA = [
       "Set up CI CD pipelines using GitHub Actions",
       "Designed cloud storage workflows for documents and media"
     ],
-    tags: ["AWS", "GCP", "Cloudflare R2", "Vercel", "Neon", "Linux", "GitHub Actions", "DNS", "SSL", "Docker"]
+    tags: ["AWS", "GCP", "Cloudflare", "Vercel", "Neon", "Linux", "GitHub Actions", "DNS", "SSL", "Docker"]
   },
   {
     title: "Security Aware Development",
