@@ -1,10 +1,12 @@
-import { Github, Linkedin, Mail, Twitter, User, Code, Terminal, Cpu, Globe } from "lucide-react";
+import { Github, Linkedin, User, Code, Terminal, Cpu } from "lucide-react";
 
 export const DATA = {
   profile: {
     name: "Vincent B. Pacaña",
     role: "Full Stack Developer",
     bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
+    summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems — microservices, realtime platforms, and performance-focused web — across TypeScript and Java backends with React/Next.js and Flutter frontends.",
+    npm: "https://www.npmjs.com/~beansint",
     location: "Cebu City, Philippines",
     resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
     stats: [
@@ -177,8 +179,49 @@ export const DATA = {
         icon: Linkedin,
         link: "https://linkedin.com/in/vincentpacanab",
       },
-      { name: "Twitter", icon: Twitter, link: "https://twitter.com" },
     ],
   },
+  awards: [
+    "Champion — Proweaver PromptQuest Hackathon 2025",
+    "Capstone Top 11 Finalist — PitchPerfect 2025, CIT-U LaunchLab Pre-Acceleration Program",
+  ],
+  credentials: [
+    {
+      name: "AWS Academy Graduate — Cloud Architecting",
+      category: "certificate",
+      issuer: "Amazon Web Services Training and Certification",
+      url: "https://www.credly.com/badges/3f69c072-bc65-4a60-b3ce-0ce44f9bf221/public_url",
+      date: "2025-12-04",
+    },
+    {
+      name: "AWS Academy Graduate — Cloud Foundations",
+      category: "certificate",
+      issuer: "Amazon Web Services Training and Certification",
+      url: "https://www.credly.com/badges/da525296-ca6b-4c1d-8994-467f6499c34b/public_url",
+      date: "2025-09-23",
+    },
+  ],
+  faq: [
+    {
+      question: "Who is Vincent Pacaña?",
+      answer:
+        "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems — microservices, realtime platforms, and performance-focused web — across TypeScript and Java backends with React/Next.js and Flutter frontends.",
+    },
+    {
+      question: "What does Vincent Pacaña do?",
+      answer:
+        "Vincent Pacaña builds practical, production-ready systems that solve real business problems — from user-facing applications to backend APIs and cloud infrastructure. He designs and builds end-to-end applications, from system logic and APIs to deployment and maintenance.",
+    },
+    {
+      question: "What technologies does Vincent Pacaña use?",
+      answer:
+        "Vincent works across Next.js, React, Node.js, NestJS, Spring Boot, Python (FastAPI, Django, Flask), PostgreSQL, Redis, Stripe, and RAG/LLM systems, with Flutter on mobile and Tailwind CSS for UI.",
+    },
+    {
+      question: "Where is Vincent Pacaña based?",
+      answer:
+        "Vincent Pacaña is based in Cebu City, Philippines, and is comfortable collaborating with distributed and cross-functional teams in English and Filipino.",
+    },
+  ],
 };
 
