@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { DATA } from "./data";
 
@@ -7,6 +9,14 @@ export const contentType = "image/png";
 
 // Cache at build time rather than rendering per request.
 export const dynamic = "force-static";
+
+// Brand mark embedded as a base64 data URI. Read from disk at build time —
+// the dark-bg variant's near-black square matches the card gradient so it
+// blends seamlessly. Satori can't render the raster-embedded SVG logo, so we
+// use the PNG. Resolved relative to the project root via process.cwd().
+const LOGO_DATA_URI = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/brand/VP colored (dark bg).png"),
+).toString("base64")}`;
 
 export default function Image() {
   const { name, role, location } = DATA.profile;
@@ -28,6 +38,18 @@ export default function Image() {
           fontFamily: "sans-serif",
         }}
       >
+        <img
+          src={LOGO_DATA_URI}
+          alt=""
+          width={120}
+          height={120}
+          style={{
+            position: "absolute",
+            top: 64,
+            left: 80,
+            borderRadius: 24,
+          }}
+        />
         <div
           style={{
             fontSize: 26,
