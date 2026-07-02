@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const SECTIONS = [
   { label: "About", href: "#personal" },
   { label: "Work", href: "#professional" },
-  { label: "Awards", href: "#recognition" },
+  { label: "Stack", href: "#experience" },
 ];
 
 /**
