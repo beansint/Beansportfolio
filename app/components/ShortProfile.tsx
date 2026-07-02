@@ -227,7 +227,7 @@ export default function ShortProfile() {
                 Vincent B. Pacaña is a full-stack developer based in Cebu City,
                 building practical, production-ready systems that solve real
                 business problems -{" "}
-                <span className="text-foreground-muted">
+                <span className="text-foreground/80">
                   from user-facing applications to backend and cloud
                   infrastructure.
                 </span>
@@ -261,13 +261,13 @@ export default function ShortProfile() {
               <p className="relative z-10 text-xs font-mono uppercase tracking-[0.2em] text-accent/80 mb-3">
                 Core stack
               </p>
-              <div className="relative z-10 flex flex-wrap gap-1.5">
+              <div className="relative z-10 flex flex-wrap gap-2">
                 {DATA.skills.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] font-mono px-2 py-1 rounded bg-white/[0.06] text-foreground-muted border border-white/5 transition-colors hover:border-accent/40 hover:text-accent"
+                    className="text-xs font-mono px-2.5 py-1.5 rounded-md bg-white/[0.06] text-foreground-muted border border-white/5 transition-colors hover:border-accent/40 hover:text-accent"
                   >
-                    {tech}
+                    {tech.startsWith("Python") ? "Python" : tech}
                   </span>
                 ))}
               </div>

@@ -268,19 +268,21 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               {project.problem ? (
-                <div className="space-y-1">
-                  <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+                <div className="space-y-1.5">
+                  <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+                    <span className="h-1 w-4 rounded-full bg-foreground-subtle/50" aria-hidden="true" />
                     Problem
                   </p>
-                  <p className="text-foreground-muted text-sm md:text-base leading-relaxed">
+                  <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
                     {project.problem}
                   </p>
                 </div>
               ) : null}
 
               {project.outcome ? (
-                <div className="space-y-1">
-                  <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-accent/80">
+                <div className="space-y-1.5 rounded-xl border border-accent/25 bg-accent/10 p-4">
+                  <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-accent">
+                    <span className="h-1 w-4 rounded-full bg-accent" aria-hidden="true" />
                     Outcome
                   </p>
                   <p className="text-white text-sm md:text-base leading-relaxed font-medium">
@@ -289,8 +291,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 </div>
               ) : null}
 
-              <div className="space-y-1">
-                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+              <div className="space-y-1.5">
+                <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+                  <span className="h-1 w-4 rounded-full bg-foreground-subtle/50" aria-hidden="true" />
                   Details
                 </p>
                 <p className="text-foreground-muted text-sm md:text-base leading-relaxed">
@@ -449,7 +452,7 @@ function ProjectMedia({
         alt={project.title}
         fill
         sizes={sizes}
-        className="object-contain transition-transform duration-500 ease-fluid motion-safe:group-hover:scale-[1.03]"
+        className="object-contain"
         priority={priority}
       />
     );
@@ -474,7 +477,7 @@ function FeaturedProjectCard({
       type="button"
       onClick={onOpen}
       aria-label={`Open ${project.title} details`}
-      className="group relative col-span-1 md:col-span-2 text-left bg-surface-2 border border-surface-border rounded-card overflow-hidden hover:border-accent/40 transition-colors ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
+      className="group relative col-span-1 md:col-span-2 text-left bg-surface-2 border border-surface-border rounded-card overflow-hidden hover:border-accent/40 motion-safe:hover:scale-[1.01] transition-[transform,border-color] ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="relative w-full min-h-[260px] lg:min-h-[420px] bg-surface overflow-hidden order-1 lg:order-2">
@@ -501,17 +504,23 @@ function FeaturedProjectCard({
           </h3>
 
           {project.problem ? (
-            <p className="text-foreground-muted text-sm md:text-base leading-relaxed">
-              <span className="text-foreground-subtle">Problem: </span>
+            <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-foreground-subtle">
+                Problem&nbsp;·&nbsp;
+              </span>
               {project.problem}
             </p>
           ) : null}
 
           {project.outcome ? (
-            <p className="text-white text-sm md:text-base leading-relaxed font-medium">
-              <span className="text-accent">Outcome: </span>
-              {project.outcome}
-            </p>
+            <div className="border-l-2 border-accent/60 pl-3">
+              <p className="text-white text-sm md:text-base leading-relaxed font-medium">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-accent">
+                  Outcome&nbsp;·&nbsp;
+                </span>
+                {project.outcome}
+              </p>
+            </div>
           ) : null}
 
           {project.tech?.length ? (
@@ -554,7 +563,7 @@ function ProjectCard({
       type="button"
       onClick={onOpen}
       aria-label={`Open ${project.title} details`}
-      className="group relative text-left bg-surface border border-surface-border rounded-card p-6 hover:border-accent/40 transition-colors ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
+      className="group relative text-left bg-surface border border-surface-border rounded-card p-6 hover:border-accent/40 motion-safe:hover:scale-[1.02] transition-[transform,border-color] ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
     >
       <div className="relative w-full mb-6 rounded-2xl overflow-hidden bg-surface-2 min-h-[220px]">
         <ProjectMedia project={project} />
@@ -568,7 +577,7 @@ function ProjectCard({
             <h3 className="text-lg md:text-xl font-display font-bold text-white">{project.title}</h3>
           </div>
           {project.outcome ? (
-            <p className="text-foreground-muted text-sm leading-snug max-w-sm">
+            <p className="text-foreground/75 text-sm leading-snug max-w-sm">
               {project.outcome}
             </p>
           ) : (
