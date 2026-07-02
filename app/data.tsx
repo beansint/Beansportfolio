@@ -4,9 +4,9 @@ export const DATA = {
   profile: {
     name: "Vincent B. Pacaña",
     role: "Full Stack Developer",
-    headline: "I build production SaaS with realtime and AI features",
+    headline: "I build production SaaS with payments, realtime, and AI features",
     subheadline:
-      "2 years shipping full-stack systems across Next.js/NestJS, RAG-powered AI apps, and realtime platforms for real clients.",
+      "2 years shipping full-stack systems across Next.js/NestJS - Stripe payments, RAG-powered AI apps, and realtime platforms for real clients.",
     bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
     summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems - microservices, realtime platforms, and performance-focused web - across TypeScript and Java backends with React/Next.js and Flutter frontends.",
     npm: "https://www.npmjs.com/~beansint",
@@ -64,7 +64,7 @@ export const DATA = {
     {
       title: "Full-Stack Web Apps",
       description:
-        "End-to-end production apps on Next.js/NestJS - from database schema to deployment, like the Studyboost platform.",
+        "End-to-end production apps on Next.js/NestJS - from database schema to deployment, like the StudyBoost payments platform.",
     },
     {
       title: "AI / RAG Systems",
@@ -84,7 +84,7 @@ export const DATA = {
   ],
   clients: [
     { name: "Three H Redwood International School", url: "https://threehredwood.edu.ph" },
-    { name: "Studyboost", url: "https://studyboost.com/" },
+    { name: "StudyBoost", url: "https://preview.studyboost.com/" },
     { name: "CIT-U Wildcat Radio", url: "" },
   ],
   testimonials: [],
@@ -107,7 +107,7 @@ export const DATA = {
       description:
         "A RAG (retrieval-augmented generation) Q&A app over official sports rulebooks (NBA/NFL/MLB/FIFA) that returns cited, source-grounded answers. Built on a pluggable multi-provider LLM registry with per-query cost tracking.",
       tech: ["Next.js", "TypeScript", "Supabase", "pgvector", "LLMs"],
-      link: "",
+      link: "https://sports-rulebook-rag-ai.vercel.app/",
       github: "https://github.com/beansint/sports-rulebook-rag-ai",
       image: "/images/projects/sportrules.png",
       problem: "Sports rules are scattered across dense official rulebooks that are slow to search.",
@@ -136,14 +136,14 @@ export const DATA = {
       outcome: "Ranks page 1 on Google and scores a perfect 100 desktop Lighthouse across every page.",
     },
     {
-      title: "Studyboost",
+      title: "StudyBoost",
       description:
-        "A full-stack e-commerce platform built with a small team (in development): contributed to the backend migration from Spring Boot to NestJS, Stripe payment integration, and an affiliate program.",
-      tech: ["Next.js", "NestJS", "PostgreSQL", "Stripe"],
-      link: "https://studyboost.com/",
+        "An AI study platform for a US (Florida-based) client where I own the payments and monetization layer end-to-end on a NestJS + Next.js stack: Stripe subscriptions with full lifecycle controls, a document-purchase marketplace with tiered pricing and paywalls, creator payouts and revenue-sharing via Stripe Connect, and resilient webhook processing (async BullMQ queue plus an event ledger) with self-serve refunds.",
+      tech: ["Next.js", "NestJS", "PostgreSQL", "Stripe Connect", "BullMQ"],
+      link: "https://preview.studyboost.com/",
       image: "/images/projects/studyboost.png",
-      problem: "The platform's Spring Boot backend needed to move to a faster-iterating NestJS stack with payments.",
-      outcome: "Contributed the backend migration to NestJS plus Stripe payments and an affiliate program.",
+      problem: "A growing US study platform needed a production-grade monetization system - subscriptions, a paid document marketplace, and creator payouts.",
+      outcome: "Own the monetization layer end-to-end: Stripe subscriptions, a tiered document-purchase marketplace, creator payouts via Stripe Connect, queue-backed webhook processing, and self-serve refunds.",
     },
     {
       title: "BlockNotes",
@@ -177,7 +177,7 @@ export const DATA = {
     {
       role: "Backend & APIs",
       description:
-        "Designs and builds contract-first APIs and services in NestJS, Spring Boot, and Python (FastAPI/Django) - including the Studyboost backend migration to NestJS with Stripe payments.",
+        "Designs and builds contract-first APIs and services in NestJS, Spring Boot, and Python (FastAPI/Django) - including StudyBoost's payments platform: Stripe subscriptions, a document-purchase marketplace, and creator payouts via Stripe Connect.",
       icon: Terminal,
     },
     {
