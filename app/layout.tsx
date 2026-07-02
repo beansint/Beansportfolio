@@ -33,7 +33,9 @@ const PROFILE_IMAGE = "images/personal/2x2.jpg";
 const NAME_PARTS = NAME.split(" ");
 const GIVEN_NAME = NAME_PARTS[0];
 const FAMILY_NAME = NAME_PARTS[NAME_PARTS.length - 1];
-const TECH = DATA.skills.techStack;
+// knowsAbout carries a few extra ecosystem keywords for search/GEO matching
+// that aren't shown as visible Core Stack chips (LangGraph is the visible one).
+const TECH = [...DATA.skills.techStack, "LangChain", "LangSmith"];
 const TECH_1 = TECH[0];
 const TECH_2 = TECH[1];
 const TECH_3 = TECH[2];

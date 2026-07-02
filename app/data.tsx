@@ -93,7 +93,7 @@ export const DATA = {
     {
       title: "QueuePilot",
       description:
-        "An agentic AI support-triage copilot that classifies, routes, and drafts grounded replies over a hybrid (dense + sparse BM25) retrieval index of ~3,000 real support tickets. A guarded LangGraph state machine decides answer / clarify / escalate from a calibrated, explainable confidence score, so it hands off to a human instead of guessing. Backed by a full LangSmith eval loop (zero-leakage benchmark, LLM-as-judge, online eval + feedback flywheel) and shipped as a multi-stage Docker image on Render behind invite-auth, rate limiting, and CI.",
+        "An agentic AI support-triage copilot that classifies, routes, and drafts grounded replies over a hybrid (dense + sparse BM25) retrieval index of ~3,000 real support tickets. Built on the LangChain stack, a guarded LangGraph state machine decides answer / clarify / escalate from a calibrated, explainable confidence score, so it hands off to a human instead of guessing. Backed by a full LangSmith eval loop (zero-leakage benchmark, LLM-as-judge, online eval + feedback flywheel) and shipped as a multi-stage Docker image on Render behind invite-auth, rate limiting, and CI.",
       tech: ["FastAPI", "LangGraph", "Pinecone", "LangSmith", "Python", "Docker"],
       link: "https://queuepilot-jjpg.onrender.com/",
       github: "https://github.com/beansint/queuepilot",
@@ -201,7 +201,7 @@ export const DATA = {
     {
       role: "Realtime & AI",
       description:
-        "Builds agentic and realtime AI - QueuePilot, a guarded LangGraph triage copilot with calibrated confidence and a LangSmith eval loop; a cited RAG Q&A system (SportRules AI); and WebSocket chat/presence for Wildcat Radio v2.",
+        "Builds agentic and realtime AI - QueuePilot, a guarded triage copilot on the LangChain stack (LangGraph orchestration + LangSmith evals) with calibrated confidence; a cited RAG Q&A system (SportRules AI); and WebSocket chat/presence for Wildcat Radio v2.",
       icon: User,
     },
   ],
@@ -285,7 +285,7 @@ export const DATA = {
     {
       question: "What technologies does Vincent Pacaña use?",
       answer:
-        "Vincent works across Next.js, React, Node.js, NestJS, Spring Boot, Python (FastAPI, Django, Flask), PostgreSQL, Redis, Stripe, and RAG/LLM and agentic-AI systems (LangGraph, LangSmith), with Flutter on mobile and Tailwind CSS for UI.",
+        "Vincent works across Next.js, React, Node.js, NestJS, Spring Boot, Python (FastAPI, Django, Flask), PostgreSQL, Redis, Stripe, and RAG/LLM and agentic-AI systems (LangChain ecosystem - LangGraph, LangSmith), with Flutter on mobile and Tailwind CSS for UI.",
     },
     {
       question: "Where is Vincent Pacaña based?",
