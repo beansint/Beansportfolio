@@ -2,15 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type React from "react";
-import { ArrowUpRight, Github, Link as LinkIcon, Maximize2, X } from "lucide-react";
+import { ArrowUpRight, Github, Hammer, Link as LinkIcon, Maximize2, X } from "lucide-react";
 import Image from "next/image";
 import {
   SiCardano,
   SiCss,
   SiDjango,
+  SiDocker,
+  SiFastapi,
   SiFlask,
   SiHtml5,
   SiJavascript,
+  SiLangchain,
   SiNestjs,
   SiNextdotjs,
   SiNodedotjs,
@@ -35,6 +38,7 @@ type Project = (typeof DATA.projects)[number] & {
   github?: string;
   interactive?: boolean;
   poster?: string;
+  wip?: boolean;
 };
 
 const isVideo = (src?: string) => Boolean(src && src.endsWith(".mp4"));
@@ -68,6 +72,11 @@ const TECH_ICON_MAP: Record<string, React.ElementType> = {
   cardano: SiCardano,
   vite: SiVite,
   python: SiPython,
+  fastapi: SiFastapi,
+  docker: SiDocker,
+  langgraph: SiLangchain,
+  langsmith: SiLangchain,
+  "stripe connect": SiStripe,
 };
 
 const normalizeTech = (label: string) => label.toLowerCase().replace(/\s+/g, " ").trim();
@@ -180,7 +189,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           className="absolute right-4 top-4 z-20 inline-flex items-center justify-center h-11 w-11 rounded-full bg-white/10 border border-white/10 text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           aria-label="Close project details"
         >
-          <X className="h-5 w-5" />
+          <X className="h-5 w-5" aria-hidden="true" />
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8 items-stretch">
@@ -196,6 +205,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               <video
                 src={project.image}
                 poster={project.poster}
+                aria-label={`${project.title} demo video`}
                 autoPlay
                 muted
                 loop
@@ -222,9 +232,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   setZoomOrigin("50% 50%");
                   toggleZoom();
                 }}
+                aria-label={isZoomed ? "Reset zoom" : "Zoom image"}
                 className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur border border-white/10 hover:bg-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <Maximize2 className="h-4 w-4" />
+                <Maximize2 className="h-4 w-4" aria-hidden="true" />
                 {isZoomed ? "Reset" : "Zoom"}
               </button>
 
@@ -250,10 +261,53 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           )}
 
           <div className="p-6 md:p-8 flex flex-col gap-4 max-h-[96dvh] overflow-y-auto">
-            <div className="space-y-2">
+            <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.2em] text-accent/80">Project</p>
-              <h3 className="text-2xl md:text-3xl font-bold text-white leading-snug">{project.title}</h3>
-              <p className="text-gray-300 text-sm md:text-base leading-relaxed">{project.description}</p>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white leading-snug">
+                  {project.title}
+                </h3>
+                {project.wip ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider text-accent">
+                    <Hammer className="h-3 w-3" aria-hidden="true" />
+                    In development
+                  </span>
+                ) : null}
+              </div>
+
+              {project.problem ? (
+                <div className="space-y-1.5">
+                  <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+                    <span className="h-1 w-4 rounded-full bg-foreground-subtle/50" aria-hidden="true" />
+                    Problem
+                  </p>
+                  <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+                    {project.problem}
+                  </p>
+                </div>
+              ) : null}
+
+              {project.outcome ? (
+                <div className="space-y-1.5 rounded-xl border border-accent/25 bg-accent/10 p-4">
+                  <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-accent">
+                    <span className="h-1 w-4 rounded-full bg-accent" aria-hidden="true" />
+                    Outcome
+                  </p>
+                  <p className="text-white text-sm md:text-base leading-relaxed font-medium">
+                    {project.outcome}
+                  </p>
+                </div>
+              ) : null}
+
+              <div className="space-y-1.5">
+                <p className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground-subtle">
+                  <span className="h-1 w-4 rounded-full bg-foreground-subtle/50" aria-hidden="true" />
+                  Details
+                </p>
+                <p className="text-foreground-muted text-sm md:text-base leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
             </div>
 
             {project.tech?.length ? (
@@ -265,7 +319,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                       key={item}
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-200"
                     >
-                      {Icon ? <Icon className="h-4 w-4" aria-hidden /> : null}
+                      {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
                       <span>{item}</span>
                     </span>
                   );
@@ -282,9 +336,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   onClick={() => sendGAEvent('event', 'project_click', { project_name: project.title })}
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-black transition hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-card-bg"
                 >
-                  <LinkIcon className="h-4 w-4" />
+                  <LinkIcon className="h-4 w-4" aria-hidden="true" />
                   Live site
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               ) : null}
 
@@ -296,7 +350,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   onClick={() => sendGAEvent('event', 'project_click', { project_name: project.title })}
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15 hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-card-bg"
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="h-4 w-4" aria-hidden="true" />
                   View code
                 </a>
               ) : null}
@@ -305,6 +359,265 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
       </div>
     </div>
+  );
+}
+
+function CardLinks({
+  project,
+  className,
+}: {
+  project: Project;
+  className?: string;
+}) {
+  const hasLiveLink = Boolean(project.link && project.link !== "#");
+  const hasGithub = Boolean(project.github);
+
+  if (!hasLiveLink && !hasGithub) return null;
+
+  const stop = (event: React.MouseEvent) => event.stopPropagation();
+  const track = () => sendGAEvent("event", "project_click", { project_name: project.title });
+
+  return (
+    <div className={`relative z-10 flex flex-wrap items-center gap-2 ${className ?? ""}`}>
+      {hasLiveLink ? (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) => {
+            stop(event);
+            track();
+          }}
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-xs font-semibold text-accent-foreground transition hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+        >
+          Live
+          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+      ) : null}
+      {hasGithub ? (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) => {
+            stop(event);
+            track();
+          }}
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-white/10 hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+        >
+          <Github className="h-3.5 w-3.5" aria-hidden="true" />
+          Code
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
+function ProjectMedia({
+  project,
+  featured,
+  priority,
+}: {
+  project: Project;
+  featured?: boolean;
+  priority?: boolean;
+}) {
+  const sizes = featured
+    ? "(min-width: 1024px) 1100px, 100vw"
+    : "(min-width: 1280px) 380px, (min-width: 768px) 45vw, 92vw";
+
+  if (project.interactive) {
+    return (
+      <div className="absolute inset-0 bg-[#0d0d0f]">
+        <TextpourField presence={featured ? 0.85 : 0.72} />
+      </div>
+    );
+  }
+
+  if (isVideo(project.image)) {
+    return (
+      <video
+        src={project.image}
+        poster={project.poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-label={`${project.title} gameplay`}
+        onMouseEnter={(e) => {
+          e.currentTarget.play().catch(() => {});
+        }}
+        onMouseLeave={(e) => e.currentTarget.pause()}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    );
+  }
+
+  if (project.image) {
+    return (
+      <Image
+        src={project.image}
+        alt={project.title}
+        fill
+        sizes={sizes}
+        className="object-contain"
+        priority={priority}
+      />
+    );
+  }
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center text-foreground-subtle">
+      Project preview
+    </div>
+  );
+}
+
+function FeaturedProjectCard({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`Open ${project.title} details`}
+      className="group relative col-span-1 md:col-span-2 text-left bg-surface-2 border border-surface-border rounded-card overflow-hidden hover:border-accent/40 motion-safe:hover:scale-[1.01] transition-[transform,border-color] ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="relative w-full min-h-[260px] lg:min-h-[420px] bg-surface overflow-hidden order-1 lg:order-2">
+          <ProjectMedia project={project} featured priority />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-l" />
+        </div>
+
+        <div className="flex flex-col gap-4 p-6 md:p-10 order-2 lg:order-1">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="font-mono text-xs text-foreground-subtle">01</span>
+            <span className="inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
+              Featured
+            </span>
+            {project.wip ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider text-accent">
+                <Hammer className="h-3 w-3" aria-hidden="true" />
+                In development
+              </span>
+            ) : null}
+          </div>
+
+          <h3 className="text-2xl md:text-4xl font-display font-bold text-white leading-tight">
+            {project.title}
+          </h3>
+
+          {project.problem ? (
+            <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-foreground-subtle">
+                Problem&nbsp;·&nbsp;
+              </span>
+              {project.problem}
+            </p>
+          ) : null}
+
+          {project.outcome ? (
+            <div className="border-l-2 border-accent/60 pl-3">
+              <p className="text-white text-sm md:text-base leading-relaxed font-medium">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-accent">
+                  Outcome&nbsp;·&nbsp;
+                </span>
+                {project.outcome}
+              </p>
+            </div>
+          ) : null}
+
+          {project.tech?.length ? (
+            <div className="flex flex-wrap gap-2">
+              {project.tech.slice(0, 6).map((item) => {
+                const Icon = TECH_ICON_MAP[normalizeTech(item)];
+                return (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] uppercase tracking-wide text-gray-200"
+                  >
+                    {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
+                    <span>{item}</span>
+                  </span>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <CardLinks project={project} className="mt-2" />
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function ProjectCard({
+  project,
+  index,
+  onOpen,
+}: {
+  project: Project;
+  index: number;
+  onOpen: () => void;
+}) {
+  const number = String(index).padStart(2, "0");
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`Open ${project.title} details`}
+      className="group relative text-left bg-surface border border-surface-border rounded-card p-6 hover:border-accent/40 motion-safe:hover:scale-[1.02] transition-[transform,border-color] ease-fluid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface cursor-pointer"
+    >
+      <div className="relative w-full mb-6 rounded-2xl overflow-hidden bg-surface-2 min-h-[220px]">
+        <ProjectMedia project={project} />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent motion-safe:opacity-0 motion-safe:group-hover:opacity-100 transition-opacity ease-fluid" />
+      </div>
+
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="font-mono text-xs text-foreground-subtle">{number}</span>
+            <h3 className="text-lg md:text-xl font-display font-bold text-white">{project.title}</h3>
+          </div>
+          {project.outcome ? (
+            <p className="text-foreground/75 text-sm leading-snug max-w-sm">
+              {project.outcome}
+            </p>
+          ) : (
+            <p className="text-foreground-muted text-sm line-clamp-2 max-w-sm">
+              {project.description}
+            </p>
+          )}
+        </div>
+        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-accent border border-white/10 transition ease-fluid motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1">
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </span>
+      </div>
+
+      {project.tech?.length ? (
+        <div className="flex flex-wrap gap-2 mt-3">
+          {project.tech.slice(0, 4).map((item) => {
+            const Icon = TECH_ICON_MAP[normalizeTech(item)];
+            return (
+              <span
+                key={item}
+                className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] uppercase tracking-wide text-gray-200"
+              >
+                {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
+                <span>{item}</span>
+              </span>
+            );
+          })}
+        </div>
+      ) : null}
+
+      <CardLinks project={project} className="mt-4" />
+    </button>
   );
 }
 
@@ -319,95 +632,35 @@ export default function Projects() {
     setActiveProject(null);
   }, []);
 
+  const featuredProject = DATA.projects.find((project) => project.featured);
+  const restProjects = DATA.projects.filter((project) => project !== featuredProject);
+
   return (
     <section
       id="professional"
       aria-labelledby="projects-title"
-      className="py-20"
+      className="py-14 md:py-16"
     >
       <div className="container mx-auto px-4 md:px-6">
         <h2
           id="projects-title"
-          className="text-2xl font-bold tracking-wide text-center mb-16"
+          className="text-2xl font-display font-bold tracking-wide text-center mb-10"
         >
           A small selection of <span className="text-accent">recent projects</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {DATA.projects.map((project, index) => (
-            <button
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {featuredProject ? (
+            <FeaturedProjectCard project={featuredProject} onOpen={() => openProject(featuredProject)} />
+          ) : null}
+
+          {restProjects.map((project, index) => (
+            <ProjectCard
               key={project.title}
-              type="button"
-              onClick={() => openProject(project)}
-              aria-label={`Open ${project.title} details`}
-              className="group text-left bg-card-bg border border-card-border rounded-3xl p-6 hover:border-accent/40 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card-bg cursor-pointer"
-            >
-              <div className="relative w-full mb-6 rounded-2xl overflow-hidden bg-gray-800 min-h-[220px]">
-                {project.interactive ? (
-                  <div className="absolute inset-0 bg-[#0d0d0f]">
-                    <TextpourField presence={0.72} />
-                  </div>
-                ) : isVideo(project.image) ? (
-                  <video
-                    src={project.image}
-                    poster={project.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    aria-label={`${project.title} gameplay`}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                ) : project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(min-width: 1024px) 540px, (min-width: 768px) 50vw, 100vw"
-                    className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-                    priority={index < 2}
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                    Project preview
-                  </div>
-                )}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">{project.title}</h3>
-                  <p className="text-gray-400 text-sm line-clamp-2 max-w-sm">
-                    {project.description}
-                  </p>
-                </div>
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-accent border border-white/10 transition group-hover:translate-x-1 group-hover:-translate-y-1">
-                  <ArrowUpRight className="h-4 w-4" />
-                </span>
-              </div>
-
-              {project.tech?.length ? (
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {project.tech.slice(0, 4).map((item) => {
-                    const Icon = TECH_ICON_MAP[normalizeTech(item)];
-                    return (
-                      <span
-                        key={item}
-                        className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] uppercase tracking-wide text-gray-200"
-                      >
-                        {Icon ? <Icon className="h-4 w-4" aria-hidden /> : null}
-                        <span>{item}</span>
-                      </span>
-                    );
-                  })}
-                </div>
-              ) : null}
-
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-accent/80">
-                Click or press Enter to open
-              </p>
-            </button>
+              project={project}
+              index={index + (featuredProject ? 2 : 1)}
+              onOpen={() => openProject(project)}
+            />
           ))}
         </div>
       </div>

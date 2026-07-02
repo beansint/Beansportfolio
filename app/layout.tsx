@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,12 +15,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
 });
 
 const poppins = Poppins({
@@ -39,7 +33,9 @@ const PROFILE_IMAGE = "images/personal/2x2.jpg";
 const NAME_PARTS = NAME.split(" ");
 const GIVEN_NAME = NAME_PARTS[0];
 const FAMILY_NAME = NAME_PARTS[NAME_PARTS.length - 1];
-const TECH = DATA.skills.techStack;
+// knowsAbout carries a few extra ecosystem keywords for search/GEO matching
+// that aren't shown as visible Core Stack chips (LangGraph is the visible one).
+const TECH = [...DATA.skills.techStack, "LangChain", "LangSmith"];
 const TECH_1 = TECH[0];
 const TECH_2 = TECH[1];
 const TECH_3 = TECH[2];
@@ -50,10 +46,13 @@ const LINKEDIN_URL =
   DATA.contact.socials.find((s) => s.name === "LinkedIn")?.link ??
   "https://linkedin.com/in/vincentpacanab";
 
-// All projects for the ItemList rich result, with a resolved public URL.
-const featuredProjects = DATA.projects
-  .map((p) => ({ ...p, url: p.link || p.github || "" }))
-  .filter((p) => p.url);
+// All projects for the ItemList rich result. `url` resolves to a public link
+// when one exists; projects still in development (no public URL yet) are kept
+// in the graph as SoftwareApplications without a url rather than dropped.
+const featuredProjects = DATA.projects.map((p) => ({
+  ...p,
+  url: p.link || p.github || "",
+}));
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -121,7 +120,7 @@ const structuredData = {
           description: project.description,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: project.url,
+          ...(project.url ? { url: project.url } : {}),
           author: { "@id": `${DOMAIN}/#person` },
           keywords: project.tech.join(", "),
         },
@@ -176,7 +175,7 @@ export const metadata: Metadata = {
     firstName: GIVEN_NAME,
     lastName: FAMILY_NAME,
     // og:image / twitter:image (1200x630, absolute URL, alt) are auto-wired
-    // from app/opengraph-image.tsx via metadataBase — do not duplicate here.
+    // from app/opengraph-image.tsx via metadataBase - do not duplicate here.
   },
   twitter: {
     card: "summary_large_image",
@@ -193,7 +192,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         {children}
         <script
