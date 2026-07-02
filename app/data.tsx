@@ -6,7 +6,7 @@ export const DATA = {
     role: "Full Stack Developer",
     headline: "I build production SaaS with payments, realtime, and AI features",
     subheadline:
-      "2 years shipping full-stack systems across Next.js/NestJS - Stripe payments, RAG-powered AI apps, and realtime platforms for real clients.",
+      "2 years shipping full-stack systems across Next.js/NestJS - Stripe payments, agentic & RAG AI apps, and realtime platforms for real clients.",
     bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
     summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems - microservices, realtime platforms, and performance-focused web - across TypeScript and Java backends with React/Next.js and Flutter frontends.",
     npm: "https://www.npmjs.com/~beansint",
@@ -19,9 +19,9 @@ export const DATA = {
       note: "IT graduate · US & international experience · flexible across time zones",
     },
     stats: [
-      { label: "Projects shipped", value: "7", isPlus: true },
+      { label: "Projects shipped", value: "8", isPlus: true },
       { label: "Google-ranked site", value: "Page 1", isPlus: false },
-      { label: "Production AI shipped", value: "AI + RAG", isPlus: false },
+      { label: "Production AI shipped", value: "Agentic + RAG", isPlus: false },
       { label: "Hackathon 2025", value: "Champion", isPlus: false },
     ],
   },
@@ -55,6 +55,7 @@ export const DATA = {
       "PostgreSQL",
       "Redis",
       "RAG / LLMs",
+      "LangGraph",
       "Stripe",
       "Tailwind",
     ],
@@ -69,7 +70,7 @@ export const DATA = {
     {
       title: "AI / RAG Systems",
       description:
-        "Retrieval-augmented Q&A and LLM-backed features with cited, source-grounded answers, like SportRules AI.",
+        "Agentic and retrieval-augmented AI - guarded copilots, hybrid-retrieval RAG, and calibrated confidence with real evals, like QueuePilot and SportRules AI.",
     },
     {
       title: "Realtime Platforms",
@@ -90,6 +91,18 @@ export const DATA = {
   testimonials: [],
   projects: [
     {
+      title: "QueuePilot",
+      description:
+        "An agentic AI support-triage copilot that classifies, routes, and drafts grounded replies over a hybrid (dense + sparse BM25) retrieval index of ~3,000 real support tickets. A guarded LangGraph state machine decides answer / clarify / escalate from a calibrated, explainable confidence score, so it hands off to a human instead of guessing. Backed by a full LangSmith eval loop (zero-leakage benchmark, LLM-as-judge, online eval + feedback flywheel) and shipped as a multi-stage Docker image on Render behind invite-auth, rate limiting, and CI.",
+      tech: ["FastAPI", "LangGraph", "Pinecone", "LangSmith", "Python", "Docker"],
+      link: "https://queuepilot-jjpg.onrender.com/",
+      github: "https://github.com/beansint/queuepilot",
+      image: "/images/projects/queuepilot.png",
+      problem: "Support LLMs confidently guess on tickets they should escalate - there is no calibrated signal for when the AI should stay quiet.",
+      outcome: "Shipped a calibrated-confidence copilot that answers, clarifies, or escalates on measured (ECE) confidence and SLA risk - not the model's self-reported guess - with an offline + online eval loop and a hardened production deploy.",
+      featured: true,
+    },
+    {
       title: "Wildcat Radio v2",
       description:
         "Lead developer on the ground-up rebuild of CIT-U's campus internet radio: a contract-first NestJS backend, live HLS audio streaming, and a realtime layer (chat, song requests, polls, live listener presence) over WebSockets, plus a desktop studio app for broadcasting. Currently in active development.",
@@ -99,7 +112,6 @@ export const DATA = {
       problem: "CIT-U's campus radio needs a modern, reliable live-broadcast platform.",
       outcome:
         "Work in progress. The go-live flow, live listener count, chat, song requests, and accounts already work end-to-end in the local build; production audio streaming and public deployment are in progress.",
-      featured: true,
       wip: true,
     },
     {
@@ -189,7 +201,7 @@ export const DATA = {
     {
       role: "Realtime & AI",
       description:
-        "Builds realtime and AI-powered features - WebSocket chat/presence for Wildcat Radio v2, and a cited RAG Q&A system (SportRules AI) over pgvector.",
+        "Builds agentic and realtime AI - QueuePilot, a guarded LangGraph triage copilot with calibrated confidence and a LangSmith eval loop; a cited RAG Q&A system (SportRules AI); and WebSocket chat/presence for Wildcat Radio v2.",
       icon: User,
     },
   ],
@@ -273,7 +285,7 @@ export const DATA = {
     {
       question: "What technologies does Vincent Pacaña use?",
       answer:
-        "Vincent works across Next.js, React, Node.js, NestJS, Spring Boot, Python (FastAPI, Django, Flask), PostgreSQL, Redis, Stripe, and RAG/LLM systems, with Flutter on mobile and Tailwind CSS for UI.",
+        "Vincent works across Next.js, React, Node.js, NestJS, Spring Boot, Python (FastAPI, Django, Flask), PostgreSQL, Redis, Stripe, and RAG/LLM and agentic-AI systems (LangGraph, LangSmith), with Flutter on mobile and Tailwind CSS for UI.",
     },
     {
       question: "Where is Vincent Pacaña based?",

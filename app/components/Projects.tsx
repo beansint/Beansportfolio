@@ -8,9 +8,12 @@ import {
   SiCardano,
   SiCss,
   SiDjango,
+  SiDocker,
+  SiFastapi,
   SiFlask,
   SiHtml5,
   SiJavascript,
+  SiLangchain,
   SiNestjs,
   SiNextdotjs,
   SiNodedotjs,
@@ -69,6 +72,11 @@ const TECH_ICON_MAP: Record<string, React.ElementType> = {
   cardano: SiCardano,
   vite: SiVite,
   python: SiPython,
+  fastapi: SiFastapi,
+  docker: SiDocker,
+  langgraph: SiLangchain,
+  langsmith: SiLangchain,
+  "stripe connect": SiStripe,
 };
 
 const normalizeTech = (label: string) => label.toLowerCase().replace(/\s+/g, " ").trim();
