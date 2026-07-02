@@ -56,6 +56,8 @@ export const DATA = {
       "Redis",
       "RAG / LLMs",
       "LangGraph",
+      "Pinecone",
+      "pgvector",
       "Stripe",
       "Tailwind",
     ],
