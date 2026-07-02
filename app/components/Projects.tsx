@@ -419,11 +419,15 @@ function ProjectMedia({
       <video
         src={project.image}
         poster={project.poster}
-        autoPlay
         muted
         loop
         playsInline
+        preload="none"
         aria-label={`${project.title} gameplay`}
+        onMouseEnter={(e) => {
+          e.currentTarget.play().catch(() => {});
+        }}
+        onMouseLeave={(e) => e.currentTarget.pause()}
         className="absolute inset-0 h-full w-full object-cover"
       />
     );
