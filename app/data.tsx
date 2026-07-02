@@ -85,20 +85,22 @@ export const DATA = {
   clients: [
     { name: "Three H Redwood International School", url: "https://threehredwood.edu.ph" },
     { name: "Studyboost", url: "https://studyboost.com/" },
-    { name: "CIT-U Wildcat Radio", url: "https://wildcat-radio.live/" },
+    { name: "CIT-U Wildcat Radio", url: "" },
   ],
   testimonials: [],
   projects: [
     {
       title: "Wildcat Radio v2",
       description:
-        "Lead developer on a production rebuild of CIT-U's campus internet radio: a contract-first NestJS backend, live HLS audio streaming, and a realtime layer (chat, song requests, polls, live listener presence) over WebSockets, plus a desktop studio app for broadcasting.",
+        "Lead developer on the ground-up rebuild of CIT-U's campus internet radio: a contract-first NestJS backend, live HLS audio streaming, and a realtime layer (chat, song requests, polls, live listener presence) over WebSockets, plus a desktop studio app for broadcasting. Currently in active development.",
       tech: ["Next.js", "NestJS", "PostgreSQL", "WebSockets", "HLS"],
-      link: "https://wildcat-radio.live/",
+      link: "",
       image: "/images/projects/wildcatradio.png",
-      problem: "CIT-U's campus radio needed a modern, reliable live-broadcast platform.",
-      outcome: "Shipped a production rebuild with live HLS streaming and realtime chat/polls, as lead developer.",
+      problem: "CIT-U's campus radio needs a modern, reliable live-broadcast platform.",
+      outcome:
+        "Work in progress. The go-live flow, live listener count, chat, song requests, and accounts already work end-to-end in the local build; production audio streaming and public deployment are in progress.",
       featured: true,
+      wip: true,
     },
     {
       title: "SportRules AI",

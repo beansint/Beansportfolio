@@ -42,9 +42,9 @@ export default function Navbar() {
             height={112}
             priority
             sizes="56px"
-            className="h-14 w-auto transition-transform group-hover:scale-105"
+            className="h-11 md:h-14 w-auto transition-transform group-hover:scale-105"
           />
-          <span className="font-bold text-xl tracking-tight">
+          <span className="hidden min-[380px]:inline font-bold text-base md:text-xl tracking-tight whitespace-nowrap">
             Vincent Pacaña<span className="text-accent">.</span>
           </span>
         </a>
