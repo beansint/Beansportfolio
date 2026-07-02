@@ -4,18 +4,45 @@
   --background: #0d0d0f;
   --foreground: #ffffff;
   --accent: #00ff9d;
+  /* Legacy tokens — kept working, components still reference bg-card-bg/border-card-border */
   --card-bg: #131316;
   --card-border: #222226;
+
+  /* Expanded design tokens */
+  --surface: #131316;
+  --surface-2: #17171b;
+  --surface-border: #222226;
+  --foreground-muted: #a1a1aa; /* replaces gray-400 usage, 7.6:1 on background */
+  --foreground-subtle: #8b8b93; /* min for large/secondary text only, >=4.5:1 on bg */
+  --accent-foreground: #0d0d0f;
+  --radius-card: 1rem;
+  --space-section: clamp(3rem, 6vw, 6rem);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-border: var(--surface-border);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-poppins);
+
+  --breakpoint-3xl: 1920px;
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  --spacing-section: var(--space-section);
+  --radius-card: var(--radius-card);
 }
 
 body {
@@ -25,8 +52,74 @@ body {
   overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Offset anchor jumps so section headings clear the fixed top navbar (h-20). */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Liquid-glass material — high-fidelity CSS approximation of Apple's Liquid
+   Glass: blurred + saturated backdrop, a bright specular top rim, a gradient
+   edge-light border, inner glow, and a soft float shadow. */
+.liquid-glass {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.02) 45%,
+      rgba(255, 255, 255, 0.05) 100%
+    ),
+    rgba(15, 15, 18, 0.5);
+  box-shadow:
+    0 12px 36px -10px rgba(0, 0, 0, 0.65),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
+    inset 0 -10px 26px -14px rgba(255, 255, 255, 0.08);
+}
+/* Gradient edge-light border (specular rim catching light at the top). */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.06) 32%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* Fallbacks: keep it legible where blur is unsupported or transparency is
+   reduced for accessibility/perf. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .liquid-glass {
+    background: rgba(18, 18, 22, 0.96);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .liquid-glass {
+    background: rgba(18, 18, 22, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Mobile nav drawer animation */
@@ -38,6 +131,38 @@ html {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Terminal caret blink for the availability status */
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Flowing dashes for circuit / pipeline / connection motifs (hover-driven). */
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+/* Organic morphing blob — a slowly living, non-geometric ambient glow. */
+@keyframes blobMorph {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 60% 40% 38% 62% / 58% 65% 35% 42%;
+    transform: rotate(10deg) scale(1.05);
   }
 }
 

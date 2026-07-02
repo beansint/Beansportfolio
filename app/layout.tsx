@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Montserrat, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,12 +15,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
 });
 
 const poppins = Poppins({
@@ -176,7 +170,7 @@ export const metadata: Metadata = {
     firstName: GIVEN_NAME,
     lastName: FAMILY_NAME,
     // og:image / twitter:image (1200x630, absolute URL, alt) are auto-wired
-    // from app/opengraph-image.tsx via metadataBase — do not duplicate here.
+    // from app/opengraph-image.tsx via metadataBase - do not duplicate here.
   },
   twitter: {
     card: "summary_large_image",
@@ -193,7 +187,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         {children}
         <script
