@@ -37,12 +37,12 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
         >
           <Image
-            src="/brand/vp-logo.svg"
+            src="/brand/vp-logo.png"
             alt="Vincent Pacaña logo"
-            width={120}
-            height={81}
+            width={112}
+            height={112}
             priority
-            unoptimized
+            sizes="56px"
             className="h-14 w-auto transition-transform group-hover:scale-105"
           />
           <span className="font-bold text-xl tracking-tight">
