@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type React from "react";
-import { ArrowUpRight, Github, Link as LinkIcon, Maximize2, X } from "lucide-react";
+import { ArrowUpRight, Github, Hammer, Link as LinkIcon, Maximize2, X } from "lucide-react";
 import Image from "next/image";
 import {
   SiCardano,
@@ -35,6 +35,7 @@ type Project = (typeof DATA.projects)[number] & {
   github?: string;
   interactive?: boolean;
   poster?: string;
+  wip?: boolean;
 };
 
 const isVideo = (src?: string) => Boolean(src && src.endsWith(".mp4"));
@@ -254,9 +255,17 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="p-6 md:p-8 flex flex-col gap-4 max-h-[96dvh] overflow-y-auto">
             <div className="space-y-3">
               <p className="text-xs uppercase tracking-[0.2em] text-accent/80">Project</p>
-              <h3 className="text-2xl md:text-3xl font-display font-bold text-white leading-snug">
-                {project.title}
-              </h3>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white leading-snug">
+                  {project.title}
+                </h3>
+                {project.wip ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider text-accent">
+                    <Hammer className="h-3 w-3" aria-hidden="true" />
+                    In development
+                  </span>
+                ) : null}
+              </div>
 
               {project.problem ? (
                 <div className="space-y-1">
@@ -474,11 +483,17 @@ function FeaturedProjectCard({
         </div>
 
         <div className="flex flex-col gap-4 p-6 md:p-10 order-2 lg:order-1">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="font-mono text-xs text-foreground-subtle">01</span>
             <span className="inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
               Featured
             </span>
+            {project.wip ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider text-accent">
+                <Hammer className="h-3 w-3" aria-hidden="true" />
+                In development
+              </span>
+            ) : null}
           </div>
 
           <h3 className="text-2xl md:text-4xl font-display font-bold text-white leading-tight">

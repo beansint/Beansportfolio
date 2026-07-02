@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { DATA } from "../data";
 import { Mail, Check, Globe, Layers, Send } from "lucide-react";
-import StatusPrompt from "./StatusPrompt";
 
 /** Subtle dot-grid texture, echoing the hero's grid background. Decorative. */
 function DotGrid({ id }: { id: string }) {
@@ -139,7 +138,7 @@ function ActivityGrid() {
   return (
     <div
       aria-hidden="true"
-      className="grid w-fit grid-flow-col grid-rows-5 gap-1 transition-[filter] duration-300 motion-safe:group-hover:brightness-150"
+      className="grid w-fit grid-flow-col grid-rows-5 gap-1"
     >
       {ACTIVITY.map((level, i) => (
         <span
@@ -342,9 +341,8 @@ export default function ShortProfile() {
                 full-time across freelance and client work.
               </p>
             </div>
-            <div className="mt-4 space-y-3">
+            <div className="mt-4">
               <ActivityGrid />
-              <StatusPrompt variant="nav" />
             </div>
           </div>
         </div>

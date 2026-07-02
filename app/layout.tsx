@@ -44,10 +44,13 @@ const LINKEDIN_URL =
   DATA.contact.socials.find((s) => s.name === "LinkedIn")?.link ??
   "https://linkedin.com/in/vincentpacanab";
 
-// All projects for the ItemList rich result, with a resolved public URL.
-const featuredProjects = DATA.projects
-  .map((p) => ({ ...p, url: p.link || p.github || "" }))
-  .filter((p) => p.url);
+// All projects for the ItemList rich result. `url` resolves to a public link
+// when one exists; projects still in development (no public URL yet) are kept
+// in the graph as SoftwareApplications without a url rather than dropped.
+const featuredProjects = DATA.projects.map((p) => ({
+  ...p,
+  url: p.link || p.github || "",
+}));
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -115,7 +118,7 @@ const structuredData = {
           description: project.description,
           applicationCategory: "WebApplication",
           operatingSystem: "Web",
-          url: project.url,
+          ...(project.url ? { url: project.url } : {}),
           author: { "@id": `${DOMAIN}/#person` },
           keywords: project.tech.join(", "),
         },
