@@ -56,8 +56,7 @@ test.describe("navigation — mobile hamburger drawer", () => {
       await expect(drawer).toBeVisible();
       await expect(drawer.getByRole("link", { name: "Projects" })).toBeVisible();
       await expect(drawer.getByRole("link", { name: "About" })).toBeVisible();
-      await expect(drawer.getByRole("link", { name: "Experience" })).toBeVisible();
-      await expect(drawer.getByRole("link", { name: "Contact" })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: "Stack" })).toBeVisible();
 
       // aria-expanded reflects state.
       await expect(page.getByRole("button", { name: /close menu/i })).toHaveAttribute(
@@ -66,7 +65,7 @@ test.describe("navigation — mobile hamburger drawer", () => {
       );
 
       // Tapping a link closes the drawer.
-      await drawer.getByRole("link", { name: "Contact" }).click();
+      await drawer.getByRole("link", { name: "Stack" }).click();
       await expect(page.locator("#mobile-menu")).toHaveCount(0);
     });
   }
