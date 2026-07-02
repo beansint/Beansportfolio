@@ -4,23 +4,32 @@ export const DATA = {
   profile: {
     name: "Vincent B. Pacaña",
     role: "Full Stack Developer",
+    headline: "I build production SaaS with realtime and AI features",
+    subheadline:
+      "2 years shipping full-stack systems across Next.js/NestJS, RAG-powered AI apps, and realtime platforms for real clients.",
     bio: "Full-stack developer in Cebu City building production SaaS and AI-powered systems: microservices, realtime platforms, and performance-focused web. Comfortable across TypeScript and Java backends, React/Next.js and Flutter frontends, and cloud deployment.",
-    summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems — microservices, realtime platforms, and performance-focused web — across TypeScript and Java backends with React/Next.js and Flutter frontends.",
+    summary: "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems - microservices, realtime platforms, and performance-focused web - across TypeScript and Java backends with React/Next.js and Flutter frontends.",
     npm: "https://www.npmjs.com/~beansint",
     location: "Cebu City, Philippines",
     resumeUrl: "/files/Vincent-Pacana-Resume.pdf",
+    availability: {
+      open: true,
+      label: "let's build",
+      detail: "freelance & full-time",
+      note: "IT graduate · US & international experience · flexible across time zones",
+    },
     stats: [
-      { label: "Age", value: "23" },
-      { label: "Years of experience", value: "2" },
-      { label: "Projects worked on", value: "7" },
-      { label: "Certifications", value: "6" },
+      { label: "Projects shipped", value: "7", isPlus: true },
+      { label: "Google-ranked site", value: "Page 1", isPlus: false },
+      { label: "Production AI shipped", value: "AI + RAG", isPlus: false },
+      { label: "Hackathon 2025", value: "Champion", isPlus: false },
     ],
   },
   education: [
     {
       school: "Cebu Institute of Technology - University",
       degree: "Bachelor of Science in Information Technology",
-      year: "2022 - Present",
+      year: "2022 - 2026",
     },
     {
       school: "Cebu Doctors University",
@@ -49,8 +58,36 @@ export const DATA = {
       "Stripe",
       "Tailwind",
     ],
-    learning: "Currently learning at CIT-U and working on projects",
+    learning: "Deepening cloud and AI/RAG skills through AWS certifications and production work.",
   },
+  services: [
+    {
+      title: "Full-Stack Web Apps",
+      description:
+        "End-to-end production apps on Next.js/NestJS - from database schema to deployment, like the Studyboost platform.",
+    },
+    {
+      title: "AI / RAG Systems",
+      description:
+        "Retrieval-augmented Q&A and LLM-backed features with cited, source-grounded answers, like SportRules AI.",
+    },
+    {
+      title: "Realtime Platforms",
+      description:
+        "Live, WebSocket-driven products - streaming, chat, presence, and polls - like Wildcat Radio v2.",
+    },
+    {
+      title: "Technical SEO Sites",
+      description:
+        "Fast, structured-data-rich sites built to rank, like Three H Redwood International School's page-1 Google result.",
+    },
+  ],
+  clients: [
+    { name: "Three H Redwood International School", url: "https://threehredwood.edu.ph" },
+    { name: "Studyboost", url: "https://studyboost.com/" },
+    { name: "CIT-U Wildcat Radio", url: "https://wildcat-radio.live/" },
+  ],
+  testimonials: [],
   projects: [
     {
       title: "Wildcat Radio v2",
@@ -59,6 +96,9 @@ export const DATA = {
       tech: ["Next.js", "NestJS", "PostgreSQL", "WebSockets", "HLS"],
       link: "https://wildcat-radio.live/",
       image: "/images/projects/wildcatradio.png",
+      problem: "CIT-U's campus radio needed a modern, reliable live-broadcast platform.",
+      outcome: "Shipped a production rebuild with live HLS streaming and realtime chat/polls, as lead developer.",
+      featured: true,
     },
     {
       title: "SportRules AI",
@@ -68,6 +108,8 @@ export const DATA = {
       link: "",
       github: "https://github.com/beansint/sports-rulebook-rag-ai",
       image: "/images/projects/sportrules.png",
+      problem: "Sports rules are scattered across dense official rulebooks that are slow to search.",
+      outcome: "Built a cited, source-grounded RAG Q&A app with per-query cost tracking across a pluggable LLM registry.",
     },
     {
       title: "textpour",
@@ -78,6 +120,8 @@ export const DATA = {
       github: "https://github.com/beansint/textpour",
       image: "",
       interactive: true,
+      problem: "No lightweight, render-agnostic way to flow text into arbitrary shapes on the web.",
+      outcome: "Published an open-source npm package with a live-reflowing text-geometry engine.",
     },
     {
       title: "Three H Redwood International School",
@@ -86,6 +130,8 @@ export const DATA = {
       tech: ["Next.js", "Vercel", "SEO", "Tailwind"],
       link: "https://threehredwood.edu.ph",
       image: "/images/projects/3h.png",
+      problem: "The school needed a fast, discoverable web presence to reach prospective families.",
+      outcome: "Ranks page 1 on Google and scores a perfect 100 desktop Lighthouse across every page.",
     },
     {
       title: "Studyboost",
@@ -94,6 +140,8 @@ export const DATA = {
       tech: ["Next.js", "NestJS", "PostgreSQL", "Stripe"],
       link: "https://studyboost.com/",
       image: "/images/projects/studyboost.png",
+      problem: "The platform's Spring Boot backend needed to move to a faster-iterating NestJS stack with payments.",
+      outcome: "Contributed the backend migration to NestJS plus Stripe payments and an affiliate program.",
     },
     {
       title: "BlockNotes",
@@ -102,6 +150,8 @@ export const DATA = {
       tech: ["Django", "Cardano", "CIP-30", "Blaze SDK", "Vite", "Python", "Blockfrost"],
       link: "",
       image: "/images/projects/blocknotes-blockchain-notepad.png",
+      problem: "Needed tamper-proof, payment-linked notes without trusting a central server with transaction logic.",
+      outcome: "Refactored transaction signing to the client, cutting server load and improving security.",
     },
     {
       title: "Project Chimera (Web Game)",
@@ -111,28 +161,34 @@ export const DATA = {
       link: "https://project-chimera-hackathon.netlify.app/",
       image: "/images/projects/chimera.mp4",
       poster: "/images/projects/chimera-poster.jpg",
+      problem: "4-hour hackathon constraint to design and ship a playable web game from scratch.",
+      outcome: "Co-built the winning game's mechanics, logic design, and technical foundation.",
     },
   ],
   experience: [
     {
-      role: "Frontend Engineer",
-      description: "Led the frontend team, built complex UIs, and optimized performance.",
+      role: "Frontend Engineering",
+      description:
+        "Ships production UIs in React/Next.js - led the frontend on Wildcat Radio v2 and built the technical-SEO-first site for Three H Redwood International School.",
       icon: Code,
     },
     {
-      role: "Backend Engineer",
-      description: "Built scalable APIs, microservices, and database schemas.",
+      role: "Backend & APIs",
+      description:
+        "Designs and builds contract-first APIs and services in NestJS, Spring Boot, and Python (FastAPI/Django) - including the Studyboost backend migration to NestJS with Stripe payments.",
       icon: Terminal,
     },
     {
-      role: "Teammate",
-      description: "Always ready to help, mentor, and collaborate with the team.",
-      icon: User,
+      role: "Cloud & Deployment",
+      description:
+        "Deploys and operates production systems on AWS and Vercel - AWS Academy Graduate in Cloud Architecting and Cloud Foundations.",
+      icon: Cpu,
     },
     {
-      role: "Aspiring DevOps",
-      description: "Learning CI/CD, Docker, Kubernetes, and cloud infrastructure.",
-      icon: Cpu,
+      role: "Realtime & AI",
+      description:
+        "Builds realtime and AI-powered features - WebSocket chat/presence for Wildcat Radio v2, and a cited RAG Q&A system (SportRules AI) over pgvector.",
+      icon: User,
     },
   ],
   timeline: [
@@ -182,19 +238,19 @@ export const DATA = {
     ],
   },
   awards: [
-    "Champion — Proweaver PromptQuest Hackathon 2025",
-    "Capstone Top 11 Finalist — PitchPerfect 2025, CIT-U LaunchLab Pre-Acceleration Program",
+    "Champion - Proweaver PromptQuest Hackathon 2025",
+    "Capstone Top 11 Finalist - PitchPerfect 2025, CIT-U LaunchLab Pre-Acceleration Program",
   ],
   credentials: [
     {
-      name: "AWS Academy Graduate — Cloud Architecting",
+      name: "AWS Academy Graduate - Cloud Architecting",
       category: "certificate",
       issuer: "Amazon Web Services Training and Certification",
       url: "https://www.credly.com/badges/3f69c072-bc65-4a60-b3ce-0ce44f9bf221/public_url",
       date: "2025-12-04",
     },
     {
-      name: "AWS Academy Graduate — Cloud Foundations",
+      name: "AWS Academy Graduate - Cloud Foundations",
       category: "certificate",
       issuer: "Amazon Web Services Training and Certification",
       url: "https://www.credly.com/badges/da525296-ca6b-4c1d-8994-467f6499c34b/public_url",
@@ -205,12 +261,12 @@ export const DATA = {
     {
       question: "Who is Vincent Pacaña?",
       answer:
-        "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems — microservices, realtime platforms, and performance-focused web — across TypeScript and Java backends with React/Next.js and Flutter frontends.",
+        "Vincent B. Pacaña is a full-stack developer based in Cebu City, Philippines, who builds production SaaS and AI-powered systems - microservices, realtime platforms, and performance-focused web - across TypeScript and Java backends with React/Next.js and Flutter frontends.",
     },
     {
       question: "What does Vincent Pacaña do?",
       answer:
-        "Vincent Pacaña builds practical, production-ready systems that solve real business problems — from user-facing applications to backend APIs and cloud infrastructure. He designs and builds end-to-end applications, from system logic and APIs to deployment and maintenance.",
+        "Vincent Pacaña builds practical, production-ready systems that solve real business problems - from user-facing applications to backend APIs and cloud infrastructure. He designs and builds end-to-end applications, from system logic and APIs to deployment and maintenance.",
     },
     {
       question: "What technologies does Vincent Pacaña use?",

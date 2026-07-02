@@ -4,6 +4,7 @@ import { DATA } from "../data";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
 import Image from "next/image";
+import StatusPrompt from "./StatusPrompt";
 
 export default function Hero() {
   const handleContactScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -39,11 +40,15 @@ export default function Hero() {
     }
   };
 
+  const { headline, subheadline } = DATA.profile;
+  // Split headline so exactly ONE keyword ("AI") is highlighted in accent.
+  const headlineParts = headline.split(/(AI)/);
+
   return (
     <section
       id="home"
       aria-labelledby="home-title"
-      className="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden"
+      className="relative pt-24 pb-10 md:pt-28 md:pb-12 overflow-hidden"
     >
       {/* subtle grid background */}
       <div
@@ -62,34 +67,46 @@ export default function Hero() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 space-y-6 text-center md:text-left">
-            <h2 className="text-sm md:text-base font-mono text-accent tracking-wider uppercase">
-              {DATA.profile.role}
-            </h2>
+            <div className="flex items-center justify-center md:justify-start">
+              <StatusPrompt variant="hero" />
+            </div>
+
             <h1
               id="home-title"
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
+              className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             >
-              Hello I&apos;m <br />
-              <span className="text-accent">{DATA.profile.name}</span>
+              <span className="block text-lg md:text-2xl font-sans font-medium text-foreground-muted mb-2">
+                Hi, I&apos;m {DATA.profile.name} -
+              </span>
+              {headlineParts.map((part, i) =>
+                part === "AI" ? (
+                  <span key={i} className="text-accent">
+                    {part}
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
             </h1>
-            <p className="text-gray-400 max-w-lg mx-auto md:mx-0 text-lg">
-              {DATA.profile.bio}
+
+            <p className="text-foreground-muted max-w-lg mx-auto md:mx-0 text-lg">
+              {subheadline}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
               <a
                 href="#contact"
                 onClick={handleContactScroll}
-                className="flex items-center gap-2 bg-accent text-black px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors cursor-pointer"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors cursor-pointer"
               >
-                Contact Me <ArrowRight className="w-4 h-4" />
+                Let&apos;s work together <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href={DATA.profile.resumeUrl}
                 download
                 onClick={() => sendGAEvent('event', 'resume_download', { location: 'hero' })}
-                className="flex items-center gap-2 border border-gray-700 hover:border-accent text-white px-6 py-3 rounded-full font-semibold transition-colors group"
-                aria-label="Download Vincent Pacaña resume"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 text-foreground-muted hover:text-white px-6 py-3 font-medium transition-colors group"
+                aria-label="Download CV (Vincent Pacaña's resume)"
               >
                 Download CV{" "}
                 <Download className="w-4 h-4 group-hover:text-accent transition-colors" />
@@ -99,13 +116,14 @@ export default function Hero() {
 
           <div className="relative">
             <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-[24rem] md:h-[24rem] relative rounded-full border-2 border-accent/30 p-3">
-               <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 animate-[spin_18s_linear_infinite]" />
-               <div className="absolute inset-3 rounded-full border border-accent/25 animate-[spin_26s_linear_infinite]" />
+               <div className="absolute inset-0 rounded-full border border-dashed border-accent/50 motion-safe:animate-[spin_18s_linear_infinite]" />
+               <div className="absolute inset-3 rounded-full border border-accent/25 motion-safe:animate-[spin_26s_linear_infinite]" />
                <div className="w-full h-full rounded-full overflow-hidden relative bg-gray-800 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
                 <Image
                    src="/images/personal/2x2.jpg"
                    alt={`${DATA.profile.name} profile picture`}
                    fill
+                   sizes="(min-width: 768px) 24rem, (min-width: 640px) 20rem, 16rem"
                    className="object-cover"
                    priority
                  />
@@ -117,13 +135,14 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 border-t border-white/5 pt-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-14 md:mt-16 border-t border-white/5 pt-10">
           {DATA.profile.stats.map((stat, index) => (
             <div key={index} className="text-center md:text-left">
               <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                {stat.value} <span className="text-accent text-xl">+</span>
+                {stat.value}
+                {stat.isPlus && <span className="text-accent text-xl">+</span>}
               </div>
-              <div className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-medium">
+              <div className="text-xs md:text-sm text-foreground-muted uppercase tracking-wider font-medium">
                 {stat.label}
               </div>
             </div>
@@ -131,7 +150,7 @@ export default function Hero() {
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-4 mt-12">
+        <div className="flex items-center justify-center gap-4 mt-8">
           {DATA.contact.socials
             .filter((social) => social.name === "GitHub" || social.name === "LinkedIn")
             .map((social) => (

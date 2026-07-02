@@ -54,8 +54,9 @@ test.describe("navigation — mobile hamburger drawer", () => {
       await toggle.click();
       const drawer = page.locator("#mobile-menu");
       await expect(drawer).toBeVisible();
-      await expect(drawer.getByRole("link", { name: "Professional" })).toBeVisible();
-      await expect(drawer.getByRole("link", { name: "Personal" })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: "Projects" })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: "About" })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: "Experience" })).toBeVisible();
       await expect(drawer.getByRole("link", { name: "Contact" })).toBeVisible();
 
       // aria-expanded reflects state.
