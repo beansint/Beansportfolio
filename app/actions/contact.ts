@@ -18,6 +18,48 @@ function sanitize(value: FormDataEntryValue | null): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+/** Escape user input before embedding it in the HTML email body. */
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/** Branded HTML email for an incoming contact-form message. */
+function contactEmailHtml(fields: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}): string {
+  const name = escapeHtml(fields.name);
+  const email = escapeHtml(fields.email);
+  const subject = escapeHtml(fields.subject || "(no subject)");
+  const message = escapeHtml(fields.message);
+  const row = (label: string, value: string) => `
+      <tr>
+        <td style="padding:6px 0;color:#6b7280;width:80px;vertical-align:top;font-size:13px;">${label}</td>
+        <td style="padding:6px 0;font-size:14px;color:#111827;">${value}</td>
+      </tr>`;
+  return `
+  <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:560px;margin:0 auto;color:#111827;line-height:1.6;">
+    <div style="border-bottom:3px solid #10b981;padding-bottom:12px;margin-bottom:20px;">
+      <h1 style="margin:0;font-size:18px;color:#0a0a0a;">New message from your portfolio</h1>
+      <p style="margin:4px 0 0;font-size:13px;color:#6b7280;">via vincentpacana.com contact form</p>
+    </div>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+      ${row("From", `<strong>${name}</strong>`)}
+      ${row("Email", `<a href="mailto:${email}" style="color:#0d9488;text-decoration:none;">${email}</a>`)}
+      ${row("Subject", subject)}
+    </table>
+    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:16px;font-size:14px;white-space:pre-wrap;color:#111827;">${message}</div>
+    <p style="margin-top:24px;font-size:12px;color:#9ca3af;">Reply directly to this email to respond to ${name}.</p>
+  </div>`;
+}
+
 export async function submitContact(
   _prevState: ContactFormState,
   formData: FormData
@@ -76,7 +118,8 @@ export async function submitContact(
       to: toEmail,
       replyTo: email,
       subject: subject ? `[Portfolio] ${subject}` : `[Portfolio] New message from ${name}`,
-      text: `From: ${name} <${email}>\n\n${message}`,
+      html: contactEmailHtml({ name, email, subject, message }),
+      text: `New message via vincentpacana.com contact form\n\nFrom: ${name} <${email}>\nSubject: ${subject || "(no subject)"}\n\n${message}`,
     });
 
     if (error) {
