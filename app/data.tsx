@@ -95,13 +95,13 @@ export const DATA = {
     {
       title: "QueuePilot",
       description:
-        "An agentic AI support-triage copilot that classifies, routes, and drafts grounded replies over a hybrid (dense + sparse BM25) retrieval index of ~3,000 real support tickets. Built on the LangChain stack, a guarded LangGraph state machine decides answer / clarify / escalate from a calibrated, explainable confidence score, so it hands off to a human instead of guessing. Backed by a full LangSmith eval loop (zero-leakage benchmark, LLM-as-judge, online eval + feedback flywheel) and shipped as a multi-stage Docker image on Render behind invite-auth, rate limiting, and CI.",
+        "A client proof-of-concept MVP: an agentic AI support-triage copilot that classifies, routes, and drafts grounded replies over a hybrid (dense + sparse BM25) retrieval index of ~3,000 real support tickets. Built on the LangChain stack, a guarded LangGraph state machine decides answer / clarify / escalate from a calibrated, explainable confidence score, so it hands off to a human instead of guessing. Backed by a full LangSmith eval loop (zero-leakage benchmark, LLM-as-judge, online eval + feedback flywheel) and shipped as a multi-stage Docker image on Render behind invite-auth, rate limiting, and CI. Delivered for a client evaluating AI support-ops automation; the engagement is under NDA, so this is the self-contained reference build, open-sourced with a full teach-as-you-build learning layer.",
       tech: ["FastAPI", "LangGraph", "Pinecone", "LangSmith", "Python", "Docker"],
       link: "https://queuepilot-jjpg.onrender.com/",
       github: "https://github.com/beansint/queuepilot",
       image: "/images/projects/queuepilot.png",
       problem: "Support LLMs confidently guess on tickets they should escalate - there is no calibrated signal for when the AI should stay quiet.",
-      outcome: "Shipped a calibrated-confidence copilot that answers, clarifies, or escalates on measured (ECE) confidence and SLA risk - not the model's self-reported guess - with an offline + online eval loop and a hardened production deploy.",
+      outcome: "Delivered a client proof-of-concept MVP: a calibrated-confidence copilot that answers, clarifies, or escalates on measured (ECE) confidence and SLA risk - not the model's self-reported guess - with an offline + online eval loop and a hardened production deploy.",
       featured: true,
     },
     {
