@@ -87,7 +87,7 @@ export const DATA = {
   ],
   clients: [
     { name: "Three H Redwood International School", url: "https://threehredwood.edu.ph" },
-    { name: "StudyBoost", url: "https://preview.studyboost.com/" },
+    { name: "StudyBoost", url: "https://studyboost.com/" },
     { name: "CIT-U Wildcat Radio", url: "" },
   ],
   testimonials: [],
@@ -154,7 +154,7 @@ export const DATA = {
       description:
         "An AI study platform for a US (Florida-based) client where I own the payments and monetization layer end-to-end on a NestJS + Next.js stack: Stripe subscriptions with full lifecycle controls, a document-purchase marketplace with tiered pricing and paywalls, creator payouts and revenue-sharing via Stripe Connect, and resilient webhook processing (async BullMQ queue plus an event ledger) with self-serve refunds.",
       tech: ["Next.js", "NestJS", "PostgreSQL", "Stripe Connect", "BullMQ"],
-      link: "https://preview.studyboost.com/",
+      link: "https://studyboost.com/",
       image: "/images/projects/studyboost.png",
       problem: "A growing US study platform needed a production-grade monetization system - subscriptions, a paid document marketplace, and creator payouts.",
       outcome: "Own the monetization layer end-to-end: Stripe subscriptions, a tiered document-purchase marketplace, creator payouts via Stripe Connect, queue-backed webhook processing, and self-serve refunds.",
