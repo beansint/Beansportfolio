@@ -188,9 +188,9 @@ export default function ShortProfile() {
           Short Profile
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Bio - the hero cell */}
-          <div className={`${CARD} md:col-span-2 p-6 md:p-8 min-h-[280px]`}>
+          <div className={`${CARD} md:col-span-2 xl:col-span-2 p-6 md:p-8 min-h-[280px]`}>
             <DotGrid id="bio-dots" />
             <div
               aria-hidden="true"
@@ -236,9 +236,9 @@ export default function ShortProfile() {
           </div>
 
           {/* Collaboration + Core stack */}
-          <div className="flex flex-col gap-6">
+          <div className="flex min-w-0 flex-col gap-6 md:col-span-2 xl:col-span-1">
             {/* Collaboration */}
-            <div className={`${CARD} flex-1 flex flex-col justify-center p-6`}>
+            <div className={`${CARD} flex-1 flex flex-col justify-center p-6 min-w-0`}>
               <ConnectionArc />
               <div className="relative z-10 flex items-center gap-2 mb-2">
                 <Globe
@@ -256,16 +256,16 @@ export default function ShortProfile() {
             </div>
 
             {/* Core stack */}
-            <div className={`${CARD} flex-1 flex flex-col justify-center p-6`}>
+            <div className={`${CARD} flex-1 flex flex-col justify-start p-6 min-w-0`}>
               <DotGrid id="stack-dots" />
               <p className="relative z-10 text-xs font-mono uppercase tracking-[0.2em] text-accent/80 mb-3">
                 Core stack
               </p>
-              <div className="relative z-10 flex flex-wrap gap-2">
+              <div className="relative z-10 flex min-w-0 flex-wrap gap-2">
                 {DATA.skills.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-xs font-mono px-2.5 py-1.5 rounded-md bg-white/[0.06] text-foreground-muted border border-white/5 transition-colors hover:border-accent/40 hover:text-accent"
+                    className="max-w-full break-words text-xs font-mono px-2.5 py-1.5 rounded-md bg-white/[0.06] text-foreground-muted border border-white/5 transition-colors hover:border-accent/40 hover:text-accent"
                   >
                     {tech.startsWith("Python") ? "Python" : tech}
                   </span>
