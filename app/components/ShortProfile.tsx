@@ -238,7 +238,7 @@ export default function ShortProfile() {
           {/* Collaboration + Core stack */}
           <div className="flex min-w-0 flex-col gap-6 md:col-span-2 xl:col-span-1">
             {/* Collaboration */}
-            <div className={`${CARD} flex-1 flex flex-col justify-center p-6 min-w-0`}>
+            <div className={`${CARD} flex flex-col justify-center p-6 min-w-0`}>
               <ConnectionArc />
               <div className="relative z-10 flex items-center gap-2 mb-2">
                 <Globe
@@ -256,7 +256,7 @@ export default function ShortProfile() {
             </div>
 
             {/* Core stack */}
-            <div className={`${CARD} flex-1 flex flex-col justify-start p-6 min-w-0`}>
+            <div className={`${CARD} flex flex-col justify-start p-6 min-w-0`}>
               <DotGrid id="stack-dots" />
               <p className="relative z-10 text-xs font-mono uppercase tracking-[0.2em] text-accent/80 mb-3">
                 Core stack
